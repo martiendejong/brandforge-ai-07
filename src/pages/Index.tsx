@@ -1,9 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import HeroIntro from "@/components/HeroIntro";
 import ChatInterfaceConnected from "@/components/ChatInterfaceConnected";
 import ProjectSidebar from "@/components/ProjectSidebar";
 import { useOnboarding } from "@/hooks/useOnboarding";
-import { Loader2 } from "lucide-react";
+import { Loader2, Send } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const {
@@ -16,6 +17,22 @@ const Index = () => {
   } = useOnboarding();
 
   const [isFullScreen, setIsFullScreen] = useState(false);
+  const [input, setInput] = useState("");
+  const [isSending, setIsSending] = useState(false);
+
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
+  const handleSend = async () => {
+    if (!input.trim() || isSending) return;
+    
+    // Start anonymous session and switch to full chat
+    await handleFirstMessage();
+  };
 
   const handleFirstMessage = async () => {
     // Start anonymous session on first message
@@ -113,19 +130,31 @@ const Index = () => {
           </h1>
           
           {/* Chat bubble container with gradient border */}
-          <div className="relative w-full max-w-3xl">
+          <div className="relative w-full max-w-2xl">
             {/* Gradient border effect */}
-            <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-3xl opacity-75 blur-sm"></div>
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full opacity-75 blur-sm"></div>
             
-            {/* Chat bubble */}
-            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-3xl shadow-xl overflow-hidden h-[600px] flex flex-col">
-              <ChatInterfaceConnected
-                projectId={projectId || ''}
-                onAuthRequired={handleAuthComplete}
-                isAnonymous={isAnonymous}
-                isFullScreen={isFullScreen}
-                onFirstMessage={handleFirstMessage}
-              />
+            {/* Input bubble */}
+            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-full shadow-xl overflow-hidden">
+              <div className="flex items-center gap-3 px-6 py-4">
+                <input
+                  type="text"
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Describe your business idea..."
+                  className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-sm"
+                  disabled={isSending}
+                />
+                <Button
+                  onClick={handleSend}
+                  size="icon"
+                  className="h-10 w-10 rounded-full bg-primary hover:bg-primary/90 flex-shrink-0"
+                  disabled={!input.trim() || isSending}
+                >
+                  <Send className="h-4 w-4" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
