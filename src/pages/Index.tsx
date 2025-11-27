@@ -105,15 +105,29 @@ const Index = () => {
           </div>
         </div>
 
-        {/* Right panel - Chat interface (always visible) */}
-        <div className="flex-1">
-          <ChatInterfaceConnected
-            projectId={projectId || ''}
-            onAuthRequired={handleAuthComplete}
-            isAnonymous={isAnonymous}
-            isFullScreen={isFullScreen}
-            onFirstMessage={handleFirstMessage}
-          />
+        {/* Right panel - Question text and chat bubble */}
+        <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
+          {/* Question text */}
+          <h1 className="text-2xl lg:text-3xl font-bold text-foreground text-center mb-8 lg:mb-12 max-w-2xl">
+            If you had to start earning money from a business in the next 90 days what would you create?
+          </h1>
+          
+          {/* Chat bubble container with gradient border */}
+          <div className="relative w-full max-w-3xl">
+            {/* Gradient border effect */}
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-3xl opacity-75 blur-sm"></div>
+            
+            {/* Chat bubble */}
+            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-3xl shadow-xl overflow-hidden h-[600px] flex flex-col">
+              <ChatInterfaceConnected
+                projectId={projectId || ''}
+                onAuthRequired={handleAuthComplete}
+                isAnonymous={isAnonymous}
+                isFullScreen={isFullScreen}
+                onFirstMessage={handleFirstMessage}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </div>
