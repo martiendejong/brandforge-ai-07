@@ -5,6 +5,7 @@ import ProjectSidebar from "@/components/ProjectSidebar";
 import { useOnboarding } from "@/hooks/useOnboarding";
 import { Loader2, Send } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   const {
@@ -63,7 +64,10 @@ const Index = () => {
     return (
       <div className="flex h-screen w-full overflow-hidden bg-background">
         <ProjectSidebar projectId={projectId} />
-        <div className="flex-1">
+        <div className="flex-1 relative">
+          <div className="absolute top-4 right-4 z-10">
+            <ThemeToggle />
+          </div>
           <ChatInterfaceConnected
             projectId={projectId}
             onAuthRequired={handleAuthComplete}
@@ -82,7 +86,10 @@ const Index = () => {
         {/* Hidden sidebar region - kept in DOM but invisible */}
         <div className="hidden lg:block lg:w-0 overflow-hidden"></div>
         
-        <div className="flex-1 animate-fade-in">
+        <div className="flex-1 animate-fade-in relative">
+          <div className="absolute top-4 right-4 z-10">
+            <ThemeToggle />
+          </div>
           <ChatInterfaceConnected
             projectId={projectId}
             onAuthRequired={handleAuthComplete}
@@ -96,7 +103,10 @@ const Index = () => {
 
   // Landing page - split view with intro and chat
   return (
-    <div className="h-screen w-full overflow-hidden bg-background gradient-hero">
+    <div className="h-screen w-full overflow-hidden bg-background gradient-hero relative">
+      <div className="absolute top-4 right-4 z-10">
+        <ThemeToggle />
+      </div>
       {/* Desktop: Split view (intro left, chat right) */}
       <div className="flex h-full flex-col lg:flex-row">
         {/* Left panel - Hero intro (desktop only) */}
