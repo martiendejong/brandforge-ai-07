@@ -3,7 +3,8 @@ import HeroIntro from "@/components/HeroIntro";
 import ChatInterfaceConnected from "@/components/ChatInterfaceConnected";
 import ProjectSidebar from "@/components/ProjectSidebar";
 import { useOnboarding } from "@/hooks/useOnboarding";
-import { Loader2 } from "lucide-react";
+import { Loader2, Settings } from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const Index = () => {
   const {
@@ -83,6 +84,13 @@ const Index = () => {
       {/* Full-width hero background */}
       <div className="absolute inset-0 w-full">
         <HeroIntro />
+      </div>
+      
+      {/* Settings button in top right */}
+      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-20">
+        <Button variant="ghost" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-background/90">
+          <Settings className="h-5 w-5" />
+        </Button>
       </div>
       
       {/* Chat bubble overlay - positioned on the right side */}
