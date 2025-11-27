@@ -79,7 +79,7 @@ const Index = () => {
 
   // Landing page - split view with intro and chat
   return (
-    <div className="h-screen w-full overflow-hidden bg-background">
+    <div className="h-screen w-full overflow-hidden bg-background gradient-hero">
       {/* Desktop: Split view (intro left, chat right) */}
       <div className="flex h-full flex-col lg:flex-row">
         {/* Left panel - Hero intro (desktop only) */}
