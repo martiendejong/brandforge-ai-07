@@ -145,8 +145,8 @@ const Index = () => {
             <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full opacity-75 blur-sm"></div>
             
             {/* Input bubble */}
-            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-full shadow-xl overflow-hidden">
-              <div className="flex items-center gap-3 px-6 py-8">
+            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-[15px] shadow-xl overflow-hidden">
+              <div className="flex items-center gap-3 px-6 py-16">
                 <input
                   type="text"
                   value={input}
