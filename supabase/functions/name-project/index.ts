@@ -40,8 +40,30 @@ serve(async (req) => {
       .eq('project_id', project_id)
       .order('created_at', { ascending: true });
 
+    // If no conversation history, use default metadata
     if (!messages || messages.length === 0) {
-      throw new Error('No conversation history found');
+      const { data: updatedProject, error: updateError } = await supabase
+        .from('projects')
+        .update({
+          name: 'Brand Identity Project',
+          description: 'A new brand identity project',
+          industry_category: 'General',
+          conversation_topics: ['branding', 'identity'],
+          key_insights: ['User wants to build a brand'],
+          stage: 'completed'
+        })
+        .eq('id', project_id)
+        .select()
+        .single();
+
+      if (updateError) {
+        throw updateError;
+      }
+
+      return new Response(
+        JSON.stringify({ project: updatedProject }),
+        { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+      );
     }
 
     // Use AI to generate project name and metadata
