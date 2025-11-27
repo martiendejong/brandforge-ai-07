@@ -316,7 +316,7 @@ const ChatInterfaceConnected = ({
   };
 
   return (
-    <div className="flex h-full flex-col">
+    <div className="flex h-full flex-col bg-[#0A0A0F]">
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto px-6 py-6">
         <div className="mx-auto max-w-3xl space-y-6">
@@ -332,10 +332,10 @@ const ChatInterfaceConnected = ({
                 </Avatar>
               )}
               <div
-                className={`max-w-[75%] rounded-2xl px-5 py-3 shadow-sm ${
+                className={`max-w-[75%] rounded-2xl px-5 py-3 shadow-sm animate-scale-in ${
                   message.role === "user"
                     ? "bg-primary text-primary-foreground rounded-br-sm"
-                    : "bg-card text-card-foreground border border-border rounded-bl-sm"
+                    : "bg-[#1A1A24] text-foreground border border-[#2A2A3A] rounded-bl-sm"
                 }`}
               >
                 <p className="leading-relaxed whitespace-pre-wrap text-sm">{message.content}</p>
@@ -362,7 +362,7 @@ const ChatInterfaceConnected = ({
                 <AvatarImage src={assistantAvatar} alt="AI Assistant" />
                 <AvatarFallback>AI</AvatarFallback>
               </Avatar>
-              <div className="bg-card rounded-2xl rounded-bl-sm px-5 py-3 border border-border shadow-sm">
+              <div className="bg-[#1A1A24] rounded-2xl rounded-bl-sm px-5 py-3 border border-[#2A2A3A] shadow-sm">
                 <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
               </div>
             </div>
@@ -374,23 +374,24 @@ const ChatInterfaceConnected = ({
       {/* Input Area */}
       <div className="px-6 pb-6">
         <div className="mx-auto max-w-3xl">
-          <div className="flex items-center gap-3 rounded-full bg-background border border-border px-6 py-3 shadow-sm">
+          <div className="flex items-center gap-3 rounded-full bg-[#1A1A24] border border-[#2A2A3A] px-6 py-4 shadow-sm">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Describe your business idea..."
-              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-sm"
+              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-base"
               disabled={isLoading}
             />
             <Button
               onClick={handleSend}
               size="icon"
-              className="h-10 w-10 rounded-full bg-primary hover:bg-primary/90 flex-shrink-0"
+              variant="ghost"
+              className="h-12 w-12 rounded-full hover:bg-accent flex-shrink-0"
               disabled={!input.trim() || isLoading}
             >
-              <Send className="h-4 w-4" />
+              <Send className="h-5 w-5 text-foreground" />
             </Button>
           </div>
         </div>
