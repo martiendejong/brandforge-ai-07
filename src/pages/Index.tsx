@@ -125,7 +125,7 @@ const Index = () => {
         {/* Right panel - Question text and chat bubble */}
         <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
           {/* Question text */}
-          <h1 className="text-xl font-semibold text-foreground text-center mb-8 lg:mb-12 max-w-2xl">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground text-center mb-8 lg:mb-12 max-w-2xl">
             If you had to start earning money from a business in the next 90 days what would you create?
           </h1>
           
@@ -136,23 +136,23 @@ const Index = () => {
             
             {/* Input bubble */}
             <div className="relative bg-[#FFF9F0] dark:bg-background rounded-full shadow-xl overflow-hidden">
-              <div className="flex items-center gap-3 px-6 py-4">
+              <div className="flex items-center gap-3 px-6 py-8">
                 <input
                   type="text"
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Describe your business idea..."
-                  className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-sm"
+                  className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-base"
                   disabled={isSending}
                 />
                 <Button
                   onClick={handleSend}
                   size="icon"
-                  className="h-10 w-10 rounded-full bg-primary hover:bg-primary/90 flex-shrink-0"
+                  className="h-12 w-12 rounded-full bg-primary hover:bg-primary/90 shadow-md flex-shrink-0"
                   disabled={!input.trim() || isSending}
                 >
-                  <Send className="h-4 w-4" />
+                  <Send className="h-5 w-5" />
                 </Button>
               </div>
             </div>
