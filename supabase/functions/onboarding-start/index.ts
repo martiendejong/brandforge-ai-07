@@ -44,15 +44,22 @@ serve(async (req) => {
 
     console.log('Anonymous user created:', authData.user.id);
 
-    // Update profile to mark as anonymous
+    // Create profile for anonymous user
     const { error: profileError } = await supabase
       .from('profiles')
-      .update({ user_type: 'anonymous' })
-      .eq('id', authData.user.id);
+      .insert({
+        id: authData.user.id,
+        username: anonymousUsername,
+        display_name: 'Anonymous User',
+        user_type: 'anonymous'
+      });
 
     if (profileError) {
-      console.error('Profile update error:', profileError);
+      console.error('Profile creation error:', profileError);
+      throw new Error('Failed to create profile');
     }
+
+    console.log('Profile created for user:', authData.user.id);
 
     // Create special onboarding project
     const { data: project, error: projectError } = await supabase
