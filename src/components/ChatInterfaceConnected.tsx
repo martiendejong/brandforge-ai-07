@@ -316,65 +316,9 @@ const ChatInterfaceConnected = ({
   };
 
   return (
-    <div className="flex h-full flex-col bg-background">
-      {/* Chat Header */}
-      <div className="border-b border-border px-6 py-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Logo size="medium" />
-            <div>
-              <h2 className="text-lg font-semibold">BrandForge AI</h2>
-              <p className="text-xs text-muted-foreground">Your branding assistant</p>
-            </div>
-          </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon">
-                <Settings className="h-5 w-5" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-56">
-              <DropdownMenuLabel>Theme</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => setTheme("light")}>
-                <Sun className="mr-2 h-4 w-4" />
-                Light {theme === "light" && "✓"}
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("dark")}>
-                <Moon className="mr-2 h-4 w-4" />
-                Dark {theme === "dark" && "✓"}
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => setTheme("system")}>
-                <Monitor className="mr-2 h-4 w-4" />
-                System {theme === "system" && "✓"}
-              </DropdownMenuItem>
-              
-              <DropdownMenuSeparator />
-              <DropdownMenuLabel>Assistant Avatar</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onClick={() => handleGenderChange("female")}>
-                <User className="mr-2 h-4 w-4" />
-                Female Avatar {avatarGender === "female" && "✓"}
-              </DropdownMenuItem>
-              <DropdownMenuItem onClick={() => handleGenderChange("male")}>
-                <User className="mr-2 h-4 w-4" />
-                Male Avatar {avatarGender === "male" && "✓"}
-              </DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem 
-                onClick={handleGenerateAvatar}
-                disabled={isGeneratingAvatar}
-              >
-                <Zap className="mr-2 h-4 w-4" />
-                {isGeneratingAvatar ? "Generating..." : "Generate AI Avatar"}
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        </div>
-      </div>
-
+    <div className="flex h-full flex-col">
       {/* Messages Area */}
-      <div className="flex-1 overflow-y-auto px-6 py-8">
+      <div className="flex-1 overflow-y-auto px-6 py-6">
         <div className="mx-auto max-w-3xl space-y-6">
           {messages.map((message) => (
             <div
@@ -428,30 +372,27 @@ const ChatInterfaceConnected = ({
       </div>
 
       {/* Input Area */}
-      <div className="border-t border-border px-6 py-6">
+      <div className="px-6 pb-6">
         <div className="mx-auto max-w-3xl">
-          <div className="glass-effect flex items-center gap-3 rounded-full px-6 py-3">
+          <div className="flex items-center gap-3 rounded-full bg-background border border-border px-6 py-3 shadow-sm">
             <input
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Describe your business idea..."
-              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none"
+              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-sm"
               disabled={isLoading}
             />
             <Button
               onClick={handleSend}
               size="icon"
-              className="h-10 w-10 rounded-full bg-primary hover:bg-primary/90"
+              className="h-10 w-10 rounded-full bg-primary hover:bg-primary/90 flex-shrink-0"
               disabled={!input.trim() || isLoading}
             >
               <Send className="h-4 w-4" />
             </Button>
           </div>
-          <p className="mt-3 text-center text-xs text-muted-foreground">
-            Press Enter to send • Your conversation is private and secure
-          </p>
         </div>
       </div>
     </div>
