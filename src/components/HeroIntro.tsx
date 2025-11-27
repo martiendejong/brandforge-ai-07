@@ -1,16 +1,21 @@
 import { Sparkles, Palette, FileText, Rocket } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo";
+
 const HeroIntro = () => {
   const handleFeatureClick = (feature: string) => {
     console.log(`Feature clicked: ${feature}`);
   };
-  return <div className="gradient-hero relative flex h-full flex-col justify-center px-4 py-8 sm:px-8 sm:py-12 lg:px-12">
-      <div className="mx-auto w-full max-w-xl">
-        <div className="mb-4 flex items-center gap-3">
-          <Logo size="large" />
-        </div>
-        
+
+  return (
+    <div className="gradient-hero relative flex h-full flex-col px-4 py-8 sm:px-8 sm:py-12 lg:px-12">
+      {/* Header with logo at top left */}
+      <div className="absolute top-6 left-6 sm:top-8 sm:left-8 lg:top-12 lg:left-12">
+        <Logo size="large" />
+      </div>
+      
+      {/* Main content centered */}
+      <div className="mx-auto w-full max-w-xl flex-1 flex flex-col justify-center">
         <h2 className="mb-6 text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
           Build Your Brand Identity with AI
         </h2>
@@ -27,8 +32,10 @@ const HeroIntro = () => {
           <Feature icon={<Rocket className="h-5 w-5 sm:h-6 sm:w-6" />} text="From idea to launch-ready brand" onClick={() => handleFeatureClick("launch")} />
         </div>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 const Feature = ({
   icon,
   text,
@@ -38,9 +45,12 @@ const Feature = ({
   text: string;
   onClick: () => void;
 }) => {
-  return <Button variant="ghost" onClick={onClick} className="flex h-auto items-center justify-start gap-3 px-4 py-3 text-left transition-all hover:scale-[1.02] hover:bg-primary/10 hover:text-foreground sm:gap-4 sm:px-5 sm:py-4">
+  return (
+    <Button variant="ghost" onClick={onClick} className="flex h-auto items-center justify-start gap-3 px-4 py-3 text-left transition-all hover:scale-[1.02] hover:bg-primary/10 hover:text-foreground sm:gap-4 sm:px-5 sm:py-4">
       <span className="text-accent">{icon}</span>
       <span className="text-sm font-medium sm:text-base">{text}</span>
-    </Button>;
+    </Button>
+  );
 };
+
 export default HeroIntro;
