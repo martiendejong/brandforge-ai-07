@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* BrandForge Dark Theme - Main backgrounds */
+    --background: 214 40% 7%;        /* #0B1220 */
+    --foreground: 214 25% 92%;       /* #E6ECF5 */
+
+    /* Surface colors */
+    --card: 214 35% 10%;             /* #101B2B */
+    --card-foreground: 214 25% 92%;
+
+    --popover: 214 35% 10%;
+    --popover-foreground: 214 25% 92%;
+
+    /* Primary Blue - #0066FF */
+    --primary: 214 100% 50%;
+    --primary-foreground: 214 25% 92%;
+    
+    /* Primary Blue Gradient Effect */
+    --primary-glow: 214 100% 65%;
+    --primary-light: 214 100% 62%;
+
+    /* Secondary surfaces */
+    --secondary: 214 30% 15%;
+    --secondary-foreground: 214 25% 92%;
+
+    --muted: 214 30% 15%;
+    --muted-foreground: 214 15% 60%;
+
+    /* Accent Orange - #FFB347 to #FF8A00 */
+    --accent: 30 100% 64%;           /* #FFB347 */
+    --accent-foreground: 214 40% 7%;
+    --accent-end: 30 100% 50%;       /* #FF8A00 */
+
+    /* Gradient Hero - #081A30 to #000814 */
+    --hero-start: 214 70% 11%;       /* #081A30 */
+    --hero-end: 214 85% 3%;          /* #000814 */
+
+    /* Borders and inputs */
+    --border: 214 25% 20%;           /* #1E2A3A */
+    --input: 214 35% 10%;            /* #0E1727 */
+    --ring: 214 100% 50%;
+
+    /* Category tag */
+    --category: 214 85% 50%;         /* #1A73E8 */
+
+    /* Title colors */
+    --title-1: 214 25% 92%;
+    --title-2: 214 15% 60%;
+
+    /* Icon color */
+    --icon: 0 0% 53%;
+
+    /* Semantic colors */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 214 25% 92%;
+    --warning: 45 93% 47%;
+    --success: 152 60% 53%;
+
+    --radius: 1rem;
+
+    --sidebar-background: 214 40% 7%;
+    --sidebar-foreground: 214 25% 92%;
+    --sidebar-primary: 214 100% 50%;
+    --sidebar-primary-foreground: 214 25% 92%;
+    --sidebar-accent: 214 30% 15%;
+    --sidebar-accent-foreground: 214 25% 92%;
+    --sidebar-border: 214 25% 20%;
+    --sidebar-ring: 214 100% 50%;
+    
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-glow)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-end)));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--hero-start)), hsl(var(--hero-end)));
+    
+    /* Frosted glass effect */
+    --glass-bg: rgba(14, 23, 39, 0.7);
+    --glass-border: rgba(30, 42, 58, 0.5);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .light {
+    /* BrandForge Light Theme - Main backgrounds */
+    --background: 0 0% 100%;         /* #FFFFFF */
+    --foreground: 0 0% 4%;           /* #0A0A0A */
+
+    /* Surface colors */
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 4%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 4%;
+
+    /* Primary Blue - #0066FF */
+    --primary: 214 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    
+    /* Primary Blue light variant */
+    --primary-glow: 214 100% 65%;
+    --primary-light: 214 100% 66%;   /* #4F8DFF */
+
+    /* Secondary surfaces */
+    --secondary: 214 30% 96%;
+    --secondary-foreground: 0 0% 4%;
+
+    --muted: 214 30% 97%;            /* #F5F7FB */
+    --muted-foreground: 214 10% 45%;
+
+    /* Accent Orange */
+    --accent: 30 100% 64%;
+    --accent-foreground: 0 0% 4%;
+    --accent-end: 30 100% 50%;
+
+    /* Gradient Hero - lighter for light mode */
+    --hero-start: 214 100% 98%;
+    --hero-end: 214 100% 95%;
+
+    /* Borders and inputs */
+    --border: 214 25% 93%;           /* #EBEEF5 */
+    --input: 214 20% 91%;            /* #E6E9F2 */
+    --ring: 214 100% 50%;
+
+    /* Category tag */
+    --category: 0 0% 97%;            /* #F8F8F8 */
+
+    /* Title colors */
+    --title-1: 0 0% 12%;             /* #1E1E1E */
+    --title-2: 214 10% 45%;          /* #6F7685 */
+
+    /* Icon color */
+    --icon: 0 0% 53%;                /* #878787 */
+
+    /* Semantic colors */
+    --destructive: 0 100% 67%;       /* #FF5A5A */
+    --destructive-foreground: 0 0% 100%;
+    --warning: 45 93% 47%;           /* #F4B400 */
+    --success: 152 60% 53%;          /* #3CCB7F */
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 4%;
+    --sidebar-primary: 214 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 214 30% 96%;
+    --sidebar-accent-foreground: 0 0% 4%;
+    --sidebar-border: 214 25% 93%;
+    --sidebar-ring: 214 100% 50%;
+    
+    /* Custom gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(var(--accent-end)));
+    --gradient-hero: linear-gradient(180deg, hsl(var(--hero-start)), hsl(var(--hero-end)));
+    
+    /* Frosted glass effect */
+    --glass-bg: rgba(255, 255, 255, 0.8);
+    --glass-border: rgba(230, 233, 242, 0.8);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+}
+
+@layer utilities {
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  
+  .glass-effect {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+  }
+  
+  .text-gradient-primary {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-accent {
+    background: var(--gradient-accent);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
