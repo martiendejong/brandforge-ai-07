@@ -3,8 +3,7 @@ import HeroIntro from "@/components/HeroIntro";
 import ChatInterfaceConnected from "@/components/ChatInterfaceConnected";
 import ProjectSidebar from "@/components/ProjectSidebar";
 import { useOnboarding } from "@/hooks/useOnboarding";
-import { Loader2, Settings } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Loader2 } from "lucide-react";
 
 const Index = () => {
   const {
@@ -78,29 +77,41 @@ const Index = () => {
     );
   }
 
-  // Landing page - hero as background with chat bubble
+  // Landing page - split view with intro and chat
   return (
-    <div className="relative h-screen w-full overflow-hidden">
-      {/* Full-width hero background */}
-      <div className="absolute inset-0 w-full">
-        <HeroIntro />
-      </div>
-      
-      {/* Settings button in top right */}
-      <div className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:top-8 lg:right-8 z-20">
-        <Button variant="ghost" size="icon" className="rounded-full bg-background/80 backdrop-blur-sm border border-border/50 hover:bg-background/90">
-          <Settings className="h-5 w-5" />
-        </Button>
-      </div>
-      
-      {/* Chat bubble overlay - positioned on the right side */}
-      <div className="relative z-10 flex h-full items-center justify-end px-4 sm:px-8 lg:px-16">
-        <div className="w-full max-w-md lg:max-w-lg xl:max-w-xl h-[85vh] rounded-2xl shadow-2xl overflow-hidden bg-background/95 backdrop-blur-sm border border-border/50">
+    <div className="h-screen w-full overflow-hidden bg-background">
+      {/* Desktop: Split view (intro left, chat right) */}
+      <div className="flex h-full flex-col lg:flex-row">
+        {/* Left panel - Hero intro (desktop only) */}
+        <div className={`lg:w-1/2 ${isFullScreen ? 'hidden' : 'hidden lg:flex'}`}>
+          <HeroIntro />
+        </div>
+        
+        {/* Mobile intro (shown on top) */}
+        <div className={`lg:hidden ${isFullScreen ? 'hidden' : 'flex'}`}>
+          <div className="w-full p-6 border-b border-border">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="text-2xl">⚡</span>
+              <h1 className="text-2xl font-bold">
+                Brand<span className="text-gradient-primary">Forge</span>
+              </h1>
+            </div>
+            <h2 className="mb-3 text-xl font-semibold">
+              Build Your Brand Identity with AI
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Transform your idea into a complete brand identity in minutes.
+            </p>
+          </div>
+        </div>
+
+        {/* Right panel - Chat interface (always visible) */}
+        <div className="flex-1">
           <ChatInterfaceConnected
             projectId={projectId || ''}
             onAuthRequired={handleAuthComplete}
             isAnonymous={isAnonymous}
-            isFullScreen={false}
+            isFullScreen={isFullScreen}
             onFirstMessage={handleFirstMessage}
           />
         </div>

@@ -316,7 +316,63 @@ const ChatInterfaceConnected = ({
   };
 
   return (
-    <div className="flex h-full flex-col bg-transparent">
+    <div className="flex h-full flex-col bg-background">
+      {/* Chat Header */}
+      <div className="border-b border-border px-6 py-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Logo size="medium" />
+            <div>
+              <h2 className="text-lg font-semibold">BrandForge AI</h2>
+              <p className="text-xs text-muted-foreground">Your branding assistant</p>
+            </div>
+          </div>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Settings className="h-5 w-5" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuLabel>Theme</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => setTheme("light")}>
+                <Sun className="mr-2 h-4 w-4" />
+                Light {theme === "light" && "✓"}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("dark")}>
+                <Moon className="mr-2 h-4 w-4" />
+                Dark {theme === "dark" && "✓"}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => setTheme("system")}>
+                <Monitor className="mr-2 h-4 w-4" />
+                System {theme === "system" && "✓"}
+              </DropdownMenuItem>
+              
+              <DropdownMenuSeparator />
+              <DropdownMenuLabel>Assistant Avatar</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={() => handleGenderChange("female")}>
+                <User className="mr-2 h-4 w-4" />
+                Female Avatar {avatarGender === "female" && "✓"}
+              </DropdownMenuItem>
+              <DropdownMenuItem onClick={() => handleGenderChange("male")}>
+                <User className="mr-2 h-4 w-4" />
+                Male Avatar {avatarGender === "male" && "✓"}
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem 
+                onClick={handleGenerateAvatar}
+                disabled={isGeneratingAvatar}
+              >
+                <Zap className="mr-2 h-4 w-4" />
+                {isGeneratingAvatar ? "Generating..." : "Generate AI Avatar"}
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+
       {/* Messages Area */}
       <div className="flex-1 overflow-y-auto px-6 py-8">
         <div className="mx-auto max-w-3xl space-y-6">
