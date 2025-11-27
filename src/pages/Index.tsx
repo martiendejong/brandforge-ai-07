@@ -143,16 +143,17 @@ const Index = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Describe your business idea..."
-                  className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-base"
+                  className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-lg"
                   disabled={isSending}
                 />
                 <Button
                   onClick={handleSend}
                   size="icon"
-                  className="h-12 w-12 rounded-full bg-primary hover:bg-primary/90 shadow-md flex-shrink-0"
+                  variant="ghost"
+                  className="h-12 w-12 rounded-full hover:bg-accent flex-shrink-0"
                   disabled={!input.trim() || isSending}
                 >
-                  <Send className="h-5 w-5" />
+                  <Send className="h-5 w-5 text-foreground" />
                 </Button>
               </div>
             </div>
