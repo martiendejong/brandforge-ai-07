@@ -374,7 +374,7 @@ const ChatInterfaceConnected = ({
       {/* Input Area */}
       <div className="px-6 pb-6">
         <div className="mx-auto max-w-3xl">
-          <div className="flex items-center gap-3 rounded-full bg-[#1A1A24] border border-[#2A2A3A] px-6 py-4 shadow-sm">
+          <div className="flex items-center gap-3 rounded-[15px] bg-[#1A1A24] border border-[#2A2A3A] px-6 py-8 shadow-sm">
             <input
               type="text"
               value={input}
