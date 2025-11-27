@@ -142,11 +142,11 @@ const Index = () => {
           {/* Chat bubble container with gradient border */}
           <div className="relative w-full max-w-2xl">
             {/* Gradient border effect */}
-            <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-full opacity-75 blur-sm"></div>
+            <div className="absolute -inset-[6px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-[15px] opacity-75 blur-lg"></div>
             
             {/* Input bubble */}
             <div className="relative bg-[#FFF9F0] dark:bg-background rounded-[15px] shadow-xl overflow-hidden">
-              <div className="flex items-center gap-3 px-6 py-16">
+              <div className="flex items-end gap-3 px-6 py-16">
                 <input
                   type="text"
                   value={input}
