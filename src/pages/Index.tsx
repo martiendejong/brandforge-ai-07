@@ -78,11 +78,11 @@ const Index = () => {
   // Anonymous user in full-screen chat
   if (isAuthenticated && isAnonymous && projectId && isFullScreen) {
     return (
-      <div className="flex h-screen w-full overflow-hidden bg-background">
+      <div className="flex h-screen w-full overflow-hidden bg-[#0A0A0F]">
         {/* Hidden sidebar region - kept in DOM but invisible */}
         <div className="hidden lg:block lg:w-0 overflow-hidden"></div>
         
-        <div className="flex-1">
+        <div className="flex-1 animate-fade-in">
           <ChatInterfaceConnected
             projectId={projectId}
             onAuthRequired={handleAuthComplete}
