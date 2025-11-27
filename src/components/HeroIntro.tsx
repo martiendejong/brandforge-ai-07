@@ -10,7 +10,7 @@ const HeroIntro = () => {
   return (
     <div className="gradient-hero relative flex h-full flex-col px-4 py-8 sm:px-8 sm:py-12 lg:px-12">
       {/* Header with logo at top left */}
-      <div className="absolute top-6 left-6 sm:top-8 sm:left-8 lg:top-12 lg:left-12">
+      <div className="absolute top-4 left-6 sm:top-6 sm:left-8 lg:top-8 lg:left-12">
         <Logo size="large" />
       </div>
       
