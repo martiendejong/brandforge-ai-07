@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
-import { Folder, Calendar, Tag, TrendingUp } from "lucide-react";
+import { MessageSquare, FileText, Info, User, Database, Settings, ChevronDown, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import Logo from "@/components/Logo";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 interface Project {
   id: string;
@@ -67,78 +67,96 @@ const ProjectSidebar = ({ projectId }: ProjectSidebarProps) => {
     );
   }
 
+  const [isProfileOpen, setIsProfileOpen] = useState(true);
+
+  const profileItems = [
+    "Brand Profile",
+    "Narrative",
+    "Mission Statement",
+    "Tone of Voice",
+    "Core Values",
+    "Unique Selling Points",
+    "Color Scheme",
+    "Logo"
+  ];
+
   return (
-    <div className="h-full w-64 bg-sidebar border-r border-sidebar-border flex flex-col">
-      <div className="p-6 border-b border-sidebar-border">
-        <div className="flex items-center gap-2 mb-4">
-          <Logo size="small" />
-          <h2 className="text-lg font-bold">
-            Brand<span className="text-gradient-primary">Forge</span>
-          </h2>
-        </div>
-        
-        <div className="space-y-2">
-          <p className="text-sm font-medium text-sidebar-foreground">
-            {profile.display_name || profile.username}
-          </p>
-          <Button 
-            variant="ghost" 
-            size="sm" 
-            onClick={handleSignOut}
-            className="w-full justify-start text-xs"
-          >
-            Sign Out
-          </Button>
-        </div>
+    <div className="h-full w-64 bg-background border-r border-border flex flex-col">
+      {/* Navigation Items */}
+      <div className="flex-1 py-4 overflow-y-auto">
+        <nav className="space-y-1 px-3">
+          {/* Chats */}
+          <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
+            <ChevronRight className="h-4 w-4" />
+            <MessageSquare className="h-4 w-4" />
+            <span>Chats</span>
+          </button>
+
+          {/* Documents */}
+          <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
+            <ChevronRight className="h-4 w-4" />
+            <FileText className="h-4 w-4" />
+            <span>Documents</span>
+          </button>
+
+          {/* Info */}
+          <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
+            <ChevronRight className="h-4 w-4" />
+            <Info className="h-4 w-4" />
+            <span>Info</span>
+          </button>
+
+          {/* Profile - Collapsible */}
+          <Collapsible open={isProfileOpen} onOpenChange={setIsProfileOpen}>
+            <CollapsibleTrigger className="w-full flex items-center gap-3 px-3 py-2 text-sm text-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
+              {isProfileOpen ? (
+                <ChevronDown className="h-4 w-4" />
+              ) : (
+                <ChevronRight className="h-4 w-4" />
+              )}
+              <User className="h-4 w-4" />
+              <span>Profile</span>
+            </CollapsibleTrigger>
+            <CollapsibleContent className="mt-1 space-y-1 pl-10">
+              {profileItems.map((item) => (
+                <button
+                  key={item}
+                  className="w-full text-left px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors"
+                >
+                  {item}
+                </button>
+              ))}
+            </CollapsibleContent>
+          </Collapsible>
+
+          {/* Gathered Data */}
+          <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
+            <ChevronRight className="h-4 w-4" />
+            <Database className="h-4 w-4" />
+            <span>Gathered Data</span>
+          </button>
+        </nav>
       </div>
 
-      <div className="flex-1 p-6 space-y-6 overflow-y-auto">
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <Folder className="h-4 w-4 text-primary" />
-            <h3 className="font-semibold">Project</h3>
-          </div>
-          <p className="text-sm font-medium mb-2">{project.name || 'Unnamed Project'}</p>
-          <p className="text-xs text-muted-foreground leading-relaxed">
-            {project.description || 'No description yet'}
-          </p>
-        </div>
-
-        {project.industry_category && (
-          <div>
-            <div className="flex items-center gap-2 mb-3">
-              <Tag className="h-4 w-4 text-category" />
-              <h3 className="font-semibold text-sm">Industry</h3>
-            </div>
-            <span className="inline-block px-3 py-1 rounded-full bg-category/10 text-category text-xs font-medium">
-              {project.industry_category}
+      {/* Settings at bottom */}
+      <div className="border-t border-border p-3">
+        <button className="w-full flex items-center gap-3 px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-accent-foreground rounded-md transition-colors">
+          <Settings className="h-4 w-4" />
+          <span>Settings</span>
+        </button>
+        
+        <div className="mt-3 px-3 py-2 flex items-center gap-3">
+          <div className="h-8 w-8 rounded-full bg-muted flex items-center justify-center">
+            <span className="text-xs font-medium">
+              {(profile.display_name || profile.username || 'U').charAt(0).toUpperCase()}
             </span>
           </div>
-        )}
-
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <TrendingUp className="h-4 w-4 text-accent" />
-            <h3 className="font-semibold text-sm">Progress</h3>
+          <div className="flex-1 min-w-0">
+            <p className="text-xs font-medium truncate">
+              {profile.display_name || profile.username}
+            </p>
+            <p className="text-xs text-muted-foreground truncate">admin@example.com</p>
           </div>
-          <div className="space-y-2 text-xs text-muted-foreground">
-            <p>Messages: {project.message_count}</p>
-            <p>Stage: {project.stage.replace('_', ' ')}</p>
-          </div>
-        </div>
-
-        <div>
-          <div className="flex items-center gap-2 mb-3">
-            <Calendar className="h-4 w-4 text-muted-foreground" />
-            <h3 className="font-semibold text-sm">Created</h3>
-          </div>
-          <p className="text-xs text-muted-foreground">
-            {new Date(project.created_at).toLocaleDateString('en-US', {
-              month: 'short',
-              day: 'numeric',
-              year: 'numeric'
-            })}
-          </p>
         </div>
       </div>
     </div>
