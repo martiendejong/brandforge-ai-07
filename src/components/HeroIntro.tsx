@@ -15,8 +15,8 @@ const HeroIntro = () => {
       </div>
       
       {/* Main content centered */}
-      <div className="mx-auto w-full max-w-xl flex-1 flex flex-col justify-center pt-12 sm:pt-16 lg:pt-20">
-        <h2 className="mb-6 text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
+      <div className="w-full max-w-2xl flex-1 flex flex-col justify-center pt-12 sm:pt-16 lg:pt-20 px-8 lg:px-16">
+        <h2 className="mb-6 text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl text-left">
           Build Your Brand Identity with AI
         </h2>
         
