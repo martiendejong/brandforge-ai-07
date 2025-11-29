@@ -375,8 +375,18 @@ const ChatInterfaceConnected = ({
       {/* Input Area */}
       <div className="px-6 pb-6">
         <div className="mx-auto max-w-3xl">
-          <div className="flex flex-col gap-3 rounded-[15px] bg-[#1A1A24] border border-[#2A2A3A] px-6 py-6 shadow-sm">
-            {/* Top row with action buttons */}
+          <div className="flex flex-col gap-3 rounded-[15px] bg-[#1A1A24] border border-[#2A2A3A] px-6 py-8 shadow-sm">
+            {/* Textarea at the top */}
+            <Textarea
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Describe your business idea..."
+              className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-base resize-none min-h-[120px] p-0"
+              disabled={isLoading}
+            />
+            
+            {/* Bottom row with all action buttons */}
             <div className="flex items-center gap-2">
               <Button
                 size="icon"
@@ -412,23 +422,11 @@ const ChatInterfaceConnected = ({
               >
                 <Mic className="h-4 w-4 text-muted-foreground" />
               </Button>
-            </div>
-            
-            {/* Textarea and send button */}
-            <div className="flex items-start gap-3">
-              <Textarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Describe your business idea..."
-                className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-base resize-none min-h-[120px] p-0"
-                disabled={isLoading}
-              />
               <Button
                 onClick={handleSend}
                 size="icon"
                 variant="ghost"
-                className="h-12 w-12 rounded-full hover:bg-accent flex-shrink-0"
+                className="h-9 w-9 rounded-full hover:bg-accent"
                 disabled={!input.trim() || isLoading}
               >
                 <Send className="h-5 w-5 text-foreground" />
