@@ -181,18 +181,6 @@ const Index = () => {
                     size="icon"
                     variant="ghost"
                     className="h-9 w-9 rounded-full hover:bg-accent"
-                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-                  >
-                    {theme === "dark" ? (
-                      <Sun className="h-4 w-4 text-muted-foreground" />
-                    ) : (
-                      <Moon className="h-4 w-4 text-muted-foreground" />
-                    )}
-                  </Button>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-9 w-9 rounded-full hover:bg-accent"
                   >
                     <Mic className="h-4 w-4 text-muted-foreground" />
                   </Button>
@@ -203,7 +191,7 @@ const Index = () => {
                     className="h-9 w-9 rounded-full hover:bg-accent"
                     disabled={!input.trim() || isSending}
                   >
-                    <Send className="h-5 w-5 text-foreground" />
+                    <Send className="h-4 w-4 text-muted-foreground" />
                   </Button>
                 </div>
               </div>
