@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
-import { Send, Zap, Loader2, Settings, User, Sun, Moon, Monitor } from "lucide-react";
+import { Send, Zap, Loader2, Settings, User, Sun, Moon, Monitor, Paperclip, Plus, Mic } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -374,25 +375,65 @@ const ChatInterfaceConnected = ({
       {/* Input Area */}
       <div className="px-6 pb-6">
         <div className="mx-auto max-w-3xl">
-          <div className="flex items-center gap-3 rounded-[15px] bg-[#1A1A24] border border-[#2A2A3A] px-6 py-8 shadow-sm">
-            <input
-              type="text"
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              onKeyPress={handleKeyPress}
-              placeholder="Describe your business idea..."
-              className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-base"
-              disabled={isLoading}
-            />
-            <Button
-              onClick={handleSend}
-              size="icon"
-              variant="ghost"
-              className="h-12 w-12 rounded-full hover:bg-accent flex-shrink-0"
-              disabled={!input.trim() || isLoading}
-            >
-              <Send className="h-5 w-5 text-foreground" />
-            </Button>
+          <div className="flex flex-col gap-3 rounded-[15px] bg-[#1A1A24] border border-[#2A2A3A] px-6 py-6 shadow-sm">
+            {/* Top row with action buttons */}
+            <div className="flex items-center gap-2">
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+              >
+                <Paperclip className="h-4 w-4 text-muted-foreground" />
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+              >
+                <Plus className="h-4 w-4 text-muted-foreground" />
+              </Button>
+              <div className="flex-1" />
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+                onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+              >
+                {theme === "dark" ? (
+                  <Sun className="h-4 w-4 text-muted-foreground" />
+                ) : (
+                  <Moon className="h-4 w-4 text-muted-foreground" />
+                )}
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+              >
+                <Mic className="h-4 w-4 text-muted-foreground" />
+              </Button>
+            </div>
+            
+            {/* Textarea and send button */}
+            <div className="flex items-start gap-3">
+              <Textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                onKeyPress={handleKeyPress}
+                placeholder="Describe your business idea..."
+                className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-base resize-none min-h-[120px] p-0"
+                disabled={isLoading}
+              />
+              <Button
+                onClick={handleSend}
+                size="icon"
+                variant="ghost"
+                className="h-12 w-12 rounded-full hover:bg-accent flex-shrink-0"
+                disabled={!input.trim() || isLoading}
+              >
+                <Send className="h-5 w-5 text-foreground" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

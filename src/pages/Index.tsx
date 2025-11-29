@@ -3,9 +3,11 @@ import HeroIntro from "@/components/HeroIntro";
 import ChatInterfaceConnected from "@/components/ChatInterfaceConnected";
 import ProjectSidebar from "@/components/ProjectSidebar";
 import { useOnboarding } from "@/hooks/useOnboarding";
-import { Loader2, Send } from "lucide-react";
+import { Loader2, Send, Paperclip, Plus, Mic, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { Textarea } from "@/components/ui/textarea";
+import { useTheme } from "next-themes";
 
 const Index = () => {
   const {
@@ -20,6 +22,7 @@ const Index = () => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -146,25 +149,65 @@ const Index = () => {
             
             {/* Input bubble */}
             <div className="relative bg-[#FFF9F0] dark:bg-background rounded-[15px] shadow-xl overflow-hidden">
-              <div className="flex items-end gap-3 px-6 py-16">
-                <input
-                  type="text"
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Describe your business idea..."
-                  className="flex-1 bg-transparent text-foreground placeholder:text-muted-foreground focus:outline-none text-lg"
-                  disabled={isSending}
-                />
-                <Button
-                  onClick={handleSend}
-                  size="icon"
-                  variant="ghost"
-                  className="h-12 w-12 rounded-full hover:bg-accent flex-shrink-0"
-                  disabled={!input.trim() || isSending}
-                >
-                  <Send className="h-5 w-5 text-foreground" />
-                </Button>
+              <div className="flex flex-col gap-3 px-6 py-6">
+                {/* Top row with action buttons */}
+                <div className="flex items-center gap-2">
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-9 w-9 rounded-full hover:bg-accent"
+                  >
+                    <Paperclip className="h-4 w-4 text-muted-foreground" />
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-9 w-9 rounded-full hover:bg-accent"
+                  >
+                    <Plus className="h-4 w-4 text-muted-foreground" />
+                  </Button>
+                  <div className="flex-1" />
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-9 w-9 rounded-full hover:bg-accent"
+                    onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+                  >
+                    {theme === "dark" ? (
+                      <Sun className="h-4 w-4 text-muted-foreground" />
+                    ) : (
+                      <Moon className="h-4 w-4 text-muted-foreground" />
+                    )}
+                  </Button>
+                  <Button
+                    size="icon"
+                    variant="ghost"
+                    className="h-9 w-9 rounded-full hover:bg-accent"
+                  >
+                    <Mic className="h-4 w-4 text-muted-foreground" />
+                  </Button>
+                </div>
+                
+                {/* Textarea and send button */}
+                <div className="flex items-start gap-3">
+                  <Textarea
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Describe your business idea..."
+                    className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-lg resize-none min-h-[120px] p-0"
+                    disabled={isSending}
+                  />
+                  <Button
+                    onClick={handleSend}
+                    size="icon"
+                    variant="ghost"
+                    className="h-12 w-12 rounded-full hover:bg-accent flex-shrink-0"
+                    disabled={!input.trim() || isSending}
+                  >
+                    <Send className="h-5 w-5 text-foreground" />
+                  </Button>
+                </div>
               </div>
             </div>
           </div>
