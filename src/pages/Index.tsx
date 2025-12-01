@@ -166,14 +166,14 @@ const Index = () => {
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-9 w-9 rounded-full hover:bg-accent"
+                      className="h-9 w-9 rounded-full hover:bg-accent transition-transform duration-200 hover:scale-110"
                     >
                       <Paperclip className="h-4 w-4 text-white" />
                     </Button>
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-9 w-9 rounded-full hover:bg-accent"
+                      className="h-9 w-9 rounded-full hover:bg-accent transition-transform duration-200 hover:scale-110"
                     >
                       <Plus className="h-4 w-4 text-white" />
                     </Button>
@@ -182,7 +182,7 @@ const Index = () => {
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-9 w-9 rounded-full hover:bg-accent"
+                      className="h-9 w-9 rounded-full hover:bg-accent transition-transform duration-200 hover:scale-110"
                     >
                       <Mic className="h-4 w-4 text-white" />
                     </Button>
@@ -190,7 +190,7 @@ const Index = () => {
                       onClick={handleSend}
                       size="icon"
                       variant="ghost"
-                      className="h-9 w-9 rounded-full hover:bg-accent"
+                      className="h-9 w-9 rounded-full hover:bg-accent transition-transform duration-200 hover:scale-110"
                       disabled={!input.trim() || isSending}
                     >
                       <Send className="h-4 w-4 text-white" />
