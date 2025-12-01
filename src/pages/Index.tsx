@@ -168,14 +168,14 @@ const Index = () => {
                       variant="ghost"
                       className="h-9 w-9 rounded-full hover:bg-accent"
                     >
-                      <Paperclip className="h-4 w-4 text-muted-foreground" />
+                      <Paperclip className="h-4 w-4 text-white" />
                     </Button>
                     <Button
                       size="icon"
                       variant="ghost"
                       className="h-9 w-9 rounded-full hover:bg-accent"
                     >
-                      <Plus className="h-4 w-4 text-muted-foreground" />
+                      <Plus className="h-4 w-4 text-white" />
                     </Button>
                   </div>
                   <div className="flex items-center gap-2">
@@ -184,7 +184,7 @@ const Index = () => {
                       variant="ghost"
                       className="h-9 w-9 rounded-full hover:bg-accent"
                     >
-                      <Mic className="h-4 w-4 text-muted-foreground" />
+                      <Mic className="h-4 w-4 text-white" />
                     </Button>
                     <Button
                       onClick={handleSend}
@@ -193,7 +193,7 @@ const Index = () => {
                       className="h-9 w-9 rounded-full hover:bg-accent"
                       disabled={!input.trim() || isSending}
                     >
-                      <Send className="h-4 w-4 text-muted-foreground" />
+                      <Send className="h-4 w-4 text-white" />
                     </Button>
                   </div>
                 </div>
