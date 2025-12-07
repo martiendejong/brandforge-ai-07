@@ -386,42 +386,39 @@ const ChatInterfaceConnected = ({
               disabled={isLoading}
             />
             
-            {/* Bottom row with action buttons - split left and right */}
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                >
-                  <Paperclip className="h-4 w-4 text-white" />
-                </Button>
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                >
-                  <Plus className="h-4 w-4 text-white" />
-                </Button>
-              </div>
-              <div className="flex items-center gap-2">
-                <Button
-                  size="icon"
-                  variant="ghost"
-                  className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                >
-                  <Mic className="h-4 w-4 text-white" />
-                </Button>
-                <Button
-                  onClick={handleSend}
-                  size="icon"
-                  variant="ghost"
-                  className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                  disabled={!input.trim() || isLoading}
-                >
-                  <Send className="h-4 w-4 text-white" />
-                </Button>
-              </div>
+            {/* Bottom row with all action buttons */}
+            <div className="flex items-center gap-2">
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+              >
+                <Paperclip className="h-4 w-4 text-muted-foreground" />
+              </Button>
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+              >
+                <Plus className="h-4 w-4 text-muted-foreground" />
+              </Button>
+              <div className="flex-1" />
+              <Button
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+              >
+                <Mic className="h-4 w-4 text-muted-foreground" />
+              </Button>
+              <Button
+                onClick={handleSend}
+                size="icon"
+                variant="ghost"
+                className="h-9 w-9 rounded-full hover:bg-accent"
+                disabled={!input.trim() || isLoading}
+              >
+                <Send className="h-4 w-4 text-muted-foreground" />
+              </Button>
             </div>
           </div>
         </div>

@@ -1,35 +1,55 @@
-import brand2boostLogo from "@/assets/brand2boost-logo.png";
-import featuresImage from "@/assets/features-list.png";
-import { Lightbulb, Users, PenTool, TrendingUp } from "lucide-react";
+import { Sparkles, Palette, FileText, Rocket } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import Logo from "@/components/Logo";
 
 const HeroIntro = () => {
+  const handleFeatureClick = (feature: string) => {
+    console.log(`Feature clicked: ${feature}`);
+  };
+
   return (
-    <div className="relative flex h-full flex-col px-6 py-6 lg:px-10 lg:py-8">
-      {/* Header with Brand2Boost logo at top left */}
-      <div className="mb-8">
-        <img src={brand2boostLogo} alt="Brand2Boost" className="h-10 w-auto sm:h-12 lg:h-14" />
+    <div className="gradient-hero relative flex h-full flex-col px-4 py-8 sm:px-8 sm:py-12 lg:px-12">
+      {/* Header with logo at top left */}
+      <div className="absolute top-4 left-6 sm:top-6 sm:left-8 lg:top-8 lg:left-12">
+        <Logo size="large" />
       </div>
       
-      {/* Main content */}
-      <div className="flex-1 flex flex-col justify-center max-w-2xl">
-        {/* Main headline */}
-        <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-foreground mb-4 leading-tight">
-          Turn Your Ideas<br />
-          Into Income — <span className="text-accent">Fast.</span>
-        </h1>
+      {/* Main content centered */}
+      <div className="mx-auto w-full max-w-xl flex-1 flex flex-col justify-center pt-12 sm:pt-16 lg:pt-20">
+        <h2 className="mb-6 text-2xl font-semibold leading-tight sm:text-3xl lg:text-4xl">
+          Build Your Brand Identity with AI
+        </h2>
         
-        {/* Subheadline */}
-        <p className="text-muted-foreground text-base lg:text-lg mb-8 max-w-md">
-          AI-powered business creation & digital branding that gets results.
+        <p className="mb-8 text-base leading-relaxed text-muted-foreground sm:text-lg">
+          Transform your idea into a complete brand identity in minutes. Our AI guides you through every step, 
+          from naming to visual identity, creating a cohesive brand that resonates with your audience.
         </p>
         
-        
-        {/* Features image */}
-        <div>
-          <img src={featuresImage} alt="BrandForge features" className="w-full max-w-sm rounded-lg" />
+        <div className="grid gap-3 sm:gap-4">
+          <Feature icon={<Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />} text="AI-powered brand strategy & naming" onClick={() => handleFeatureClick("strategy")} />
+          <Feature icon={<Palette className="h-5 w-5 sm:h-6 sm:w-6" />} text="Custom logos & visual identity" onClick={() => handleFeatureClick("logos")} />
+          <Feature icon={<FileText className="h-5 w-5 sm:h-6 sm:w-6" />} text="Brand voice & messaging guidelines" onClick={() => handleFeatureClick("voice")} />
+          <Feature icon={<Rocket className="h-5 w-5 sm:h-6 sm:w-6" />} text="From idea to launch-ready brand" onClick={() => handleFeatureClick("launch")} />
         </div>
       </div>
     </div>
+  );
+};
+
+const Feature = ({
+  icon,
+  text,
+  onClick
+}: {
+  icon: React.ReactNode;
+  text: string;
+  onClick: () => void;
+}) => {
+  return (
+    <Button variant="ghost" onClick={onClick} className="flex h-auto items-center justify-start gap-3 px-4 py-3 text-left transition-all hover:scale-[1.02] hover:bg-primary/10 hover:text-foreground sm:gap-4 sm:px-5 sm:py-4">
+      <span className="text-accent">{icon}</span>
+      <span className="text-sm font-medium sm:text-base">{text}</span>
+    </Button>
   );
 };
 
