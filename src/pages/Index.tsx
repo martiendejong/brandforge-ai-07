@@ -158,7 +158,7 @@ const Index = () => {
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Describe your business idea..."
-                  className="flex-1 bg-secondary/50 border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary text-base resize-none min-h-[100px] rounded-xl p-4"
+                  className="flex-1 bg-muted border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary text-base resize-none min-h-[100px] rounded-xl p-4"
                   disabled={isSending}
                 />
                 
