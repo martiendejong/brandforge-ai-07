@@ -1,12 +1,7 @@
-import { Sparkles, Palette, FileText, Rocket } from "lucide-react";
-import { Button } from "@/components/ui/button";
 import Logo from "@/components/Logo";
+import featuresImage from "@/assets/features-list.png";
 
 const HeroIntro = () => {
-  const handleFeatureClick = (feature: string) => {
-    console.log(`Feature clicked: ${feature}`);
-  };
-
   return (
     <div className="gradient-hero relative flex h-full flex-col px-4 py-8 sm:px-8 sm:py-12 lg:px-12">
       {/* Header with logo at top left */}
@@ -25,31 +20,9 @@ const HeroIntro = () => {
           from naming to visual identity, creating a cohesive brand that resonates with your audience.
         </p>
         
-        <div className="grid gap-3 sm:gap-4">
-          <Feature icon={<Sparkles className="h-5 w-5 sm:h-6 sm:w-6" />} text="AI-powered brand strategy & naming" onClick={() => handleFeatureClick("strategy")} />
-          <Feature icon={<Palette className="h-5 w-5 sm:h-6 sm:w-6" />} text="Custom logos & visual identity" onClick={() => handleFeatureClick("logos")} />
-          <Feature icon={<FileText className="h-5 w-5 sm:h-6 sm:w-6" />} text="Brand voice & messaging guidelines" onClick={() => handleFeatureClick("voice")} />
-          <Feature icon={<Rocket className="h-5 w-5 sm:h-6 sm:w-6" />} text="From idea to launch-ready brand" onClick={() => handleFeatureClick("launch")} />
-        </div>
+        <img src={featuresImage} alt="BrandForge features" className="w-full max-w-md" />
       </div>
     </div>
-  );
-};
-
-const Feature = ({
-  icon,
-  text,
-  onClick
-}: {
-  icon: React.ReactNode;
-  text: string;
-  onClick: () => void;
-}) => {
-  return (
-    <Button variant="ghost" onClick={onClick} className="flex h-auto items-center justify-start gap-3 px-4 py-3 text-left transition-all hover:scale-[1.02] hover:bg-primary/10 hover:text-foreground sm:gap-4 sm:px-5 sm:py-4">
-      <span className="text-accent">{icon}</span>
-      <span className="text-sm font-medium sm:text-base">{text}</span>
-    </Button>
   );
 };
 
