@@ -104,16 +104,17 @@ const Index = () => {
     );
   }
 
-  // Landing page - split view with intro and chat
+  // Landing page - split view with intro and chat (landscape desktop)
   return (
     <div className="h-screen w-full overflow-hidden bg-background gradient-hero relative">
       <div className="absolute top-4 right-4 z-10">
         <ThemeToggle />
       </div>
-      {/* Desktop: Split view (intro left, chat right) */}
+      
+      {/* Desktop: Landscape split view */}
       <div className="flex h-full flex-col lg:flex-row">
-        {/* Left panel - Hero intro (desktop only) */}
-        <div className={`lg:w-1/2 ${isFullScreen ? 'hidden' : 'hidden lg:flex'}`}>
+        {/* Left panel - Hero intro with content */}
+        <div className={`lg:w-[55%] xl:w-1/2 ${isFullScreen ? 'hidden' : 'hidden lg:flex'}`}>
           <HeroIntro />
         </div>
         
@@ -127,78 +128,82 @@ const Index = () => {
               </h1>
             </div>
             <h2 className="mb-3 text-xl font-semibold">
-              Build Your Brand Identity with AI
+              Turn Your Ideas Into Income — Fast.
             </h2>
             <p className="text-sm text-muted-foreground">
-              Transform your idea into a complete brand identity in minutes.
+              AI-powered business creation & digital branding that gets results.
             </p>
           </div>
         </div>
 
-        {/* Right panel - Question text and chat bubble */}
-        <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
-          {/* Question text */}
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground text-center mb-8 lg:mb-12 max-w-2xl">
-            If you had to start earning money from a business in the next 90 days what would you create?
-          </h1>
-          
-          {/* Chat bubble container with gradient border */}
-          <div className="relative w-full max-w-2xl">
-            {/* Gradient border effect */}
-            <div className="absolute -inset-[6px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-[15px] opacity-75 blur-lg"></div>
+        {/* Right panel - Chat card */}
+        <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-8 xl:p-12">
+          {/* Chat card container */}
+          <div className="relative w-full max-w-lg">
+            {/* Subtle glow effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-primary/30 via-primary/20 to-accent/30 rounded-2xl opacity-60 blur-xl"></div>
             
-            {/* Input bubble */}
-            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-[15px] shadow-xl overflow-hidden">
-              <div className="flex flex-col gap-3 px-6 py-16">
-                {/* Textarea at the top */}
+            {/* Chat card */}
+            <div className="relative bg-card border border-border rounded-2xl shadow-2xl overflow-hidden">
+              <div className="flex flex-col gap-4 p-6 lg:p-8">
+                {/* Question text inside card */}
+                <h2 className="text-lg lg:text-xl font-medium text-foreground leading-relaxed">
+                  If you had to start earning money in the next 90 days...<br />
+                  <span className="text-muted-foreground">what would you create?</span>
+                </h2>
+                
+                {/* Textarea */}
                 <Textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyPress={handleKeyPress}
                   placeholder="Describe your business idea..."
-                  className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-lg resize-none min-h-[120px] p-0"
+                  className="flex-1 bg-secondary/50 border-border text-foreground placeholder:text-muted-foreground focus-visible:ring-1 focus-visible:ring-primary text-base resize-none min-h-[100px] rounded-xl p-4"
                   disabled={isSending}
                 />
                 
-                {/* Bottom row with action buttons - split left and right */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
+                {/* Bottom row with action buttons */}
+                <div className="flex items-center justify-between pt-2">
+                  <div className="flex items-center gap-1">
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
+                      className="h-9 w-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
                     >
-                      <Paperclip className="h-4 w-4 text-white" />
+                      <Paperclip className="h-4 w-4" />
                     </Button>
                     <Button
                       size="icon"
                       variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
+                      className="h-9 w-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
                     >
-                      <Plus className="h-4 w-4 text-white" />
-                    </Button>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                    >
-                      <Mic className="h-4 w-4 text-white" />
-                    </Button>
-                    <Button
-                      onClick={handleSend}
-                      size="icon"
-                      variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                      disabled={!input.trim() || isSending}
-                    >
-                      <Send className="h-4 w-4 text-white" />
+                      <Plus className="h-4 w-4" />
                     </Button>
                   </div>
+                  <Button
+                    onClick={handleSend}
+                    size="icon"
+                    variant="ghost"
+                    className="h-9 w-9 rounded-full text-muted-foreground hover:text-foreground hover:bg-secondary transition-all duration-200"
+                    disabled={!input.trim() || isSending}
+                  >
+                    <Send className="h-4 w-4" />
+                  </Button>
                 </div>
               </div>
             </div>
+          </div>
+          
+          {/* CTA section below card */}
+          <div className="mt-8 text-center">
+            <p className="text-foreground font-medium mb-4">Ready to Create a Business That Works?</p>
+            <Button 
+              onClick={handleSend}
+              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-3 rounded-full text-base shadow-lg hover:shadow-xl transition-all duration-200"
+              disabled={!input.trim() || isSending}
+            >
+              Get Started — It's Free
+            </Button>
           </div>
         </div>
       </div>
