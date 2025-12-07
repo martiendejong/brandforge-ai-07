@@ -137,7 +137,7 @@ const Index = () => {
         </div>
 
         {/* Right panel - Chat card */}
-        <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-8 xl:p-12">
+        <div className="flex-1 flex flex-col items-end justify-end p-6 lg:p-8 xl:p-12">
           {/* Chat card container */}
           <div className="relative w-full max-w-lg">
             {/* Subtle glow effect */}
