@@ -23,15 +23,6 @@ const HeroIntro = () => {
           AI-powered business creation & digital branding that gets results.
         </p>
         
-        {/* AI + Branding = Growth section */}
-        <div className="mb-8">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-foreground mb-3">
-            AI + Branding = Growth
-          </h2>
-          <p className="text-muted-foreground text-sm lg:text-base max-w-sm">
-            We help you create, refine and launch ideas that grow fast.
-          </p>
-        </div>
         
         {/* Features image */}
         <div>
