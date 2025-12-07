@@ -1,5 +1,6 @@
 import Logo from "@/components/Logo";
 import featuresImage from "@/assets/features-list.png";
+import brand2boostLogo from "@/assets/brand2boost-logo.png";
 
 const HeroIntro = () => {
   return (
@@ -15,10 +16,7 @@ const HeroIntro = () => {
           Build Your Brand Identity with AI
         </h2>
         
-        <p className="mb-8 text-base leading-relaxed text-muted-foreground sm:text-lg">
-          Transform your idea into a complete brand identity in minutes. Our AI guides you through every step, 
-          from naming to visual identity, creating a cohesive brand that resonates with your audience.
-        </p>
+        <img src={brand2boostLogo} alt="Brand2Boost" className="mb-8 w-full max-w-xs" />
         
         <img src={featuresImage} alt="BrandForge features" className="w-full max-w-md" />
       </div>
