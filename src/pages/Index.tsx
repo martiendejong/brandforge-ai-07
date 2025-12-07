@@ -194,17 +194,6 @@ const Index = () => {
             </div>
           </div>
           
-          {/* CTA section below card */}
-          <div className="mt-8 text-center">
-            <p className="text-foreground font-medium mb-4">Ready to Create a Business That Works?</p>
-            <Button 
-              onClick={handleSend}
-              className="bg-accent hover:bg-accent/90 text-accent-foreground font-semibold px-8 py-3 rounded-full text-base shadow-lg hover:shadow-xl transition-all duration-200"
-              disabled={!input.trim() || isSending}
-            >
-              Get Started — It's Free
-            </Button>
-          </div>
         </div>
       </div>
     </div>
