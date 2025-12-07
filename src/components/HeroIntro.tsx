@@ -34,36 +34,8 @@ const HeroIntro = () => {
         </div>
         
         {/* Features image */}
-        <div className="mb-8">
+        <div>
           <img src={featuresImage} alt="BrandForge features" className="w-full max-w-sm rounded-lg" />
-        </div>
-      </div>
-      
-      {/* Feature icons row at bottom */}
-      <div className="grid grid-cols-4 gap-4 mt-auto pt-6 border-t border-border/30">
-        <div className="flex flex-col items-center text-center">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mb-2">
-            <Lightbulb className="h-5 w-5 text-accent" />
-          </div>
-          <span className="text-xs lg:text-sm text-muted-foreground">Launch in<br />90 days or less</span>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mb-2">
-            <Users className="h-5 w-5 text-accent" />
-          </div>
-          <span className="text-xs lg:text-sm text-muted-foreground">AI-powered<br />business creation</span>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mb-2">
-            <PenTool className="h-5 w-5 text-accent" />
-          </div>
-          <span className="text-xs lg:text-sm text-muted-foreground">Branding that<br />stands out</span>
-        </div>
-        <div className="flex flex-col items-center text-center">
-          <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center mb-2">
-            <TrendingUp className="h-5 w-5 text-accent" />
-          </div>
-          <span className="text-xs lg:text-sm text-muted-foreground">Growth-focused<br />strategy</span>
         </div>
       </div>
     </div>
