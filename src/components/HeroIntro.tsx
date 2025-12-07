@@ -1,4 +1,4 @@
-import featuresImage from "@/assets/features-list.png";
+import aiHandImage from "@/assets/ai-hand-image.png";
 import brand2boostLogo from "@/assets/brand2boost-logo.png";
 
 const HeroIntro = () => {
@@ -8,7 +8,7 @@ const HeroIntro = () => {
       <div className="mx-auto w-full max-w-xl flex-1 flex flex-col justify-center">
         <img src={brand2boostLogo} alt="Brand2Boost" className="-mt-32 mb-8 w-full max-w-xs" />
         
-        <img src={featuresImage} alt="BrandForge features" className="w-full max-w-md" />
+        <img src={aiHandImage} alt="AI powered branding" className="w-full max-w-md rounded-lg" />
       </div>
     </div>
   );
