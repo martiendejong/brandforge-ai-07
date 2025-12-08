@@ -139,20 +139,20 @@ const Index = () => {
         <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
           {/* Question text */}
           <div className="text-left mb-8 lg:mb-12 max-w-2xl">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium italic leading-tight">
-              <span className="text-foreground/80">If you had to start</span>
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium italic leading-tight bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
+              <span>If you had to start</span>
               <br />
-              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-500 via-rose-400 to-orange-400 bg-clip-text text-transparent">
+              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold">
                 earning money
               </span>
               <br />
-              <span className="text-foreground/80">from a business in the next</span>
+              <span>from a business in the next</span>
               <br />
-              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-orange-400 via-rose-400 to-red-500 bg-clip-text text-transparent">
+              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold">
                 90 days
               </span>
               <br />
-              <span className="text-foreground/80">what would you create?</span>
+              <span>what would you create?</span>
             </h1>
           </div>
           
