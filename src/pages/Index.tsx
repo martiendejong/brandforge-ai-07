@@ -138,9 +138,23 @@ const Index = () => {
         {/* Right panel - Question text and chat bubble */}
         <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
           {/* Question text */}
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold italic text-center mb-8 lg:mb-12 max-w-2xl bg-gradient-to-r from-red-500 via-rose-400 to-orange-400 bg-clip-text text-transparent">
-            If you had to start earning money from a business in the next 90 days what would you create?
-          </h1>
+          <div className="text-left mb-8 lg:mb-12 max-w-2xl">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium italic leading-tight">
+              <span className="text-foreground/80">If you had to start</span>
+              <br />
+              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-red-500 via-rose-400 to-orange-400 bg-clip-text text-transparent">
+                earning money
+              </span>
+              <br />
+              <span className="text-foreground/80">from a business in the next</span>
+              <br />
+              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-orange-400 via-rose-400 to-red-500 bg-clip-text text-transparent">
+                90 days
+              </span>
+              <br />
+              <span className="text-foreground/80">what would you create?</span>
+            </h1>
+          </div>
           
           {/* Chat bubble container with gradient border */}
           <div className="relative w-full max-w-2xl">
