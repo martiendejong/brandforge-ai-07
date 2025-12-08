@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Textarea } from "@/components/ui/textarea";
 import { useTheme } from "next-themes";
-
 const Index = () => {
   const {
     isAuthenticated,
@@ -16,28 +15,27 @@ const Index = () => {
     projectId,
     isLoading,
     startAnonymousSession,
-    convertToRegisteredUser,
+    convertToRegisteredUser
   } = useOnboarding();
-
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [input, setInput] = useState("");
   const [isSending, setIsSending] = useState(false);
-  const { theme, setTheme } = useTheme();
-
+  const {
+    theme,
+    setTheme
+  } = useTheme();
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !e.shiftKey) {
       e.preventDefault();
       handleSend();
     }
   };
-
   const handleSend = async () => {
     if (!input.trim() || isSending) return;
-    
+
     // Start anonymous session and switch to full chat
     await handleFirstMessage();
   };
-
   const handleFirstMessage = async () => {
     // Start anonymous session on first message
     if (!isAuthenticated && !isLoading) {
@@ -49,43 +47,31 @@ const Index = () => {
       }
     }
   };
-
   const handleAuthComplete = async (userId: string) => {
     await convertToRegisteredUser(userId);
   };
-
   if (isLoading) {
-    return (
-      <div className="flex h-screen items-center justify-center bg-background">
+    return <div className="flex h-screen items-center justify-center bg-background">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
-      </div>
-    );
+      </div>;
   }
 
   // Authenticated and converted (not anonymous) - show full app with sidebar
   if (isAuthenticated && !isAnonymous && projectId) {
-    return (
-      <div className="flex h-screen w-full overflow-hidden bg-background">
+    return <div className="flex h-screen w-full overflow-hidden bg-background">
         <ProjectSidebar projectId={projectId} />
         <div className="flex-1 relative">
           <div className="absolute top-4 right-4 z-10">
             <ThemeToggle />
           </div>
-          <ChatInterfaceConnected
-            projectId={projectId}
-            onAuthRequired={handleAuthComplete}
-            isAnonymous={false}
-            isFullScreen={true}
-          />
+          <ChatInterfaceConnected projectId={projectId} onAuthRequired={handleAuthComplete} isAnonymous={false} isFullScreen={true} />
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Anonymous user in full-screen chat
   if (isAuthenticated && isAnonymous && projectId && isFullScreen) {
-    return (
-      <div className="flex h-screen w-full overflow-hidden bg-[#0A0A0F]">
+    return <div className="flex h-screen w-full overflow-hidden bg-[#0A0A0F]">
         {/* Hidden sidebar region - kept in DOM but invisible */}
         <div className="hidden lg:block lg:w-0 overflow-hidden"></div>
         
@@ -93,20 +79,13 @@ const Index = () => {
           <div className="absolute top-4 right-4 z-10">
             <ThemeToggle />
           </div>
-          <ChatInterfaceConnected
-            projectId={projectId}
-            onAuthRequired={handleAuthComplete}
-            isAnonymous={true}
-            isFullScreen={true}
-          />
+          <ChatInterfaceConnected projectId={projectId} onAuthRequired={handleAuthComplete} isAnonymous={true} isFullScreen={true} />
         </div>
-      </div>
-    );
+      </div>;
   }
 
   // Landing page - split view with intro and chat
-  return (
-    <div className="h-screen w-full overflow-hidden bg-[#0a1628] relative">
+  return <div className="h-screen w-full overflow-hidden bg-[#0a1628] relative">
       <div className="absolute top-4 right-4 z-10">
         <ThemeToggle />
       </div>
@@ -152,10 +131,7 @@ const Index = () => {
           </div>
 
           {/* Start Your Journey Button */}
-          <Button 
-            className="mb-8 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-105"
-            onClick={handleFirstMessage}
-          >
+          <Button className="mb-8 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-105" onClick={handleFirstMessage}>
             Start Your Journey Now
           </Button>
           
@@ -168,7 +144,7 @@ const Index = () => {
             <div className="relative bg-[#0f1a2e] rounded-2xl overflow-hidden">
               {/* Header text */}
               <div className="px-6 pt-6 pb-4">
-                <p className="text-slate-400 text-sm">Start describing your business idea...</p>
+                
               </div>
               
               {/* Input area */}
@@ -176,38 +152,17 @@ const Index = () => {
                 <div className="bg-[#1a2744] rounded-xl p-3">
                   <div className="flex items-center gap-3">
                     <div className="flex items-center gap-2">
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50"
-                      >
+                      <Button size="icon" variant="ghost" className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
                         <Paperclip className="h-4 w-4" />
                       </Button>
-                      <Button
-                        size="icon"
-                        variant="ghost"
-                        className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50"
-                      >
+                      <Button size="icon" variant="ghost" className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
                         <Plus className="h-4 w-4" />
                       </Button>
                     </div>
                     
-                    <input
-                      type="text"
-                      value={input}
-                      onChange={(e) => setInput(e.target.value)}
-                      onKeyPress={handleKeyPress}
-                      placeholder="Describe your business idea..."
-                      className="flex-1 bg-transparent border-0 text-slate-300 placeholder:text-slate-500 focus:outline-none text-sm"
-                      disabled={isSending}
-                    />
+                    <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyPress={handleKeyPress} placeholder="Describe your business idea..." className="flex-1 bg-transparent border-0 text-slate-300 placeholder:text-slate-500 focus:outline-none text-sm" disabled={isSending} />
                     
-                    <Button
-                      onClick={handleSend}
-                      size="icon"
-                      className="h-8 w-8 rounded-lg bg-orange-500 hover:bg-orange-600 text-white"
-                      disabled={!input.trim() || isSending}
-                    >
+                    <Button onClick={handleSend} size="icon" className="h-8 w-8 rounded-lg bg-orange-500 hover:bg-orange-600 text-white" disabled={!input.trim() || isSending}>
                       <Send className="h-4 w-4" />
                     </Button>
                   </div>
@@ -217,8 +172,6 @@ const Index = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
