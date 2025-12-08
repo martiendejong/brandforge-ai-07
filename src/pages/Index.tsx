@@ -104,75 +104,98 @@ const Index = () => {
     );
   }
 
-  // Landing page - full page with hero background
+  // Landing page - split view with intro and chat
   return (
-    <div className="h-screen w-full overflow-hidden gradient-hero relative flex flex-col items-center justify-center p-6 lg:p-12">
+    <div className="h-screen w-full overflow-hidden bg-background gradient-hero relative">
       <div className="absolute top-4 right-4 z-10">
         <ThemeToggle />
       </div>
-      
-      {/* Hero intro content */}
-      <div className="w-full max-w-4xl flex flex-col items-center">
-        <HeroIntro />
+      {/* Desktop: Split view (intro left, chat right) */}
+      <div className="flex h-full flex-col lg:flex-row">
+        {/* Left panel - Hero intro (desktop only) */}
+        <div className={`lg:w-1/2 ${isFullScreen ? 'hidden' : 'hidden lg:flex'}`}>
+          <HeroIntro />
+        </div>
         
-        {/* Question text */}
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground text-center mb-8 lg:mb-12 max-w-2xl mt-8">
-          If you had to start earning money from a business in the next 90 days what would you create?
-        </h1>
-        
-        {/* Chat bubble container with gradient border */}
-        <div className="relative w-full max-w-2xl">
-          {/* Gradient border effect */}
-          <div className="absolute -inset-[6px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-[15px] opacity-75 blur-lg"></div>
+        {/* Mobile intro (shown on top) */}
+        <div className={`lg:hidden ${isFullScreen ? 'hidden' : 'flex'}`}>
+          <div className="w-full p-6 border-b border-border">
+            <div className="mb-4 flex items-center gap-2">
+              <span className="text-2xl">⚡</span>
+              <h1 className="text-2xl font-bold">
+                Brand<span className="text-gradient-primary">Forge</span>
+              </h1>
+            </div>
+            <h2 className="mb-3 text-xl font-semibold">
+              Build Your Brand Identity with AI
+            </h2>
+            <p className="text-sm text-muted-foreground">
+              Transform your idea into a complete brand identity in minutes.
+            </p>
+          </div>
+        </div>
+
+        {/* Right panel - Question text and chat bubble */}
+        <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
+          {/* Question text */}
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground text-center mb-8 lg:mb-12 max-w-2xl">
+            If you had to start earning money from a business in the next 90 days what would you create?
+          </h1>
           
-          {/* Input bubble */}
-          <div className="relative bg-[#FFF9F0] dark:bg-background rounded-[15px] shadow-xl overflow-hidden">
-            <div className="flex flex-col gap-3 px-6 py-16">
-              {/* Textarea at the top */}
-              <Textarea
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                onKeyPress={handleKeyPress}
-                placeholder="Describe your business idea..."
-                className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-lg resize-none min-h-[120px] p-0"
-                disabled={isSending}
-              />
-              
-              {/* Bottom row with action buttons - split left and right */}
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                  >
-                    <Paperclip className="h-4 w-4 text-muted-foreground" />
-                  </Button>
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                  >
-                    <Plus className="h-4 w-4 text-muted-foreground" />
-                  </Button>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Button
-                    size="icon"
-                    variant="ghost"
-                    className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                  >
-                    <Mic className="h-4 w-4 text-muted-foreground" />
-                  </Button>
-                  <Button
-                    onClick={handleSend}
-                    size="icon"
-                    variant="ghost"
-                    className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                    disabled={!input.trim() || isSending}
-                  >
-                    <Send className="h-4 w-4 text-muted-foreground" />
-                  </Button>
+          {/* Chat bubble container with gradient border */}
+          <div className="relative w-full max-w-2xl">
+            {/* Gradient border effect */}
+            <div className="absolute -inset-[6px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-[15px] opacity-75 blur-lg"></div>
+            
+            {/* Input bubble */}
+            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-[15px] shadow-xl overflow-hidden">
+              <div className="flex flex-col gap-3 px-6 py-16">
+                {/* Textarea at the top */}
+                <Textarea
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Describe your business idea..."
+                  className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-lg resize-none min-h-[120px] p-0"
+                  disabled={isSending}
+                />
+                
+                {/* Bottom row with action buttons - split left and right */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
+                    >
+                      <Paperclip className="h-4 w-4 text-white" />
+                    </Button>
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
+                    >
+                      <Plus className="h-4 w-4 text-white" />
+                    </Button>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Button
+                      size="icon"
+                      variant="ghost"
+                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
+                    >
+                      <Mic className="h-4 w-4 text-white" />
+                    </Button>
+                    <Button
+                      onClick={handleSend}
+                      size="icon"
+                      variant="ghost"
+                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
+                      disabled={!input.trim() || isSending}
+                    >
+                      <Send className="h-4 w-4 text-white" />
+                    </Button>
+                  </div>
                 </div>
               </div>
             </div>
