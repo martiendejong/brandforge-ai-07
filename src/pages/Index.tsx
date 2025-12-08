@@ -138,7 +138,7 @@ const Index = () => {
         {/* Right panel - Question text and chat bubble */}
         <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
           {/* Question text */}
-          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold text-foreground text-center mb-8 lg:mb-12 max-w-2xl">
+          <h1 className="text-2xl sm:text-3xl lg:text-4xl font-semibold italic text-center mb-8 lg:mb-12 max-w-2xl bg-gradient-to-r from-red-500 via-rose-400 to-orange-400 bg-clip-text text-transparent">
             If you had to start earning money from a business in the next 90 days what would you create?
           </h1>
           
