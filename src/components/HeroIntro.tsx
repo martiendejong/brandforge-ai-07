@@ -1,4 +1,4 @@
-import aiHandImage from "@/assets/ai-hand-image.png";
+import featuresImage from "@/assets/features-list.png";
 import brand2boostLogo from "@/assets/brand2boost-logo.png";
 
 const HeroIntro = () => {
@@ -6,9 +6,9 @@ const HeroIntro = () => {
     <div className="gradient-hero relative flex h-full flex-col px-4 py-8 sm:px-8 sm:py-12 lg:px-12">
       {/* Main content centered */}
       <div className="mx-auto w-full max-w-xl flex-1 flex flex-col justify-center">
-        <img src={brand2boostLogo} alt="Brand2Boost" className="-mt-32 mb-8 w-full max-w-xs" />
+        <img src={brand2boostLogo} alt="Brand2Boost" className="-mt-8 mb-8 w-full max-w-xs" />
         
-        <img src={aiHandImage} alt="AI powered branding" className="w-full max-w-md rounded-lg" />
+        <img src={featuresImage} alt="BrandForge features" className="w-full max-w-md" />
       </div>
     </div>
   );

@@ -375,14 +375,14 @@ const ChatInterfaceConnected = ({
       {/* Input Area */}
       <div className="px-6 pb-6">
         <div className="mx-auto max-w-3xl">
-          <div className="flex flex-col gap-3 rounded-[15px] bg-[#1A1A24] px-6 py-8 shadow-sm">
+          <div className="flex flex-col gap-3 rounded-[15px] bg-[#1A1A24] border border-[#2A2A3A] px-6 py-8 shadow-sm">
             {/* Textarea at the top */}
             <Textarea
               value={input}
               onChange={(e) => setInput(e.target.value)}
               onKeyPress={handleKeyPress}
               placeholder="Describe your business idea..."
-              className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-base resize-none min-h-[250px] p-0"
+              className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-base resize-none min-h-[120px] p-0"
               disabled={isLoading}
             />
             
