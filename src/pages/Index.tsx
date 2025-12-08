@@ -106,14 +106,15 @@ const Index = () => {
 
   // Landing page - split view with intro and chat
   return (
-    <div className="h-screen w-full overflow-hidden bg-background gradient-hero relative">
+    <div className="h-screen w-full overflow-hidden bg-[#0a1628] relative">
       <div className="absolute top-4 right-4 z-10">
         <ThemeToggle />
       </div>
-      {/* Desktop: Split view (intro left, chat right) */}
+      
+      {/* Desktop: Split view */}
       <div className="flex h-full flex-col lg:flex-row">
-        {/* Left panel - Hero intro (desktop only) */}
-        <div className={`lg:w-1/2 ${isFullScreen ? 'hidden' : 'hidden lg:flex'}`}>
+        {/* Left panel - Logo and Video/Image */}
+        <div className={`lg:w-1/2 ${isFullScreen ? 'hidden' : 'hidden lg:flex'} flex-col p-8 lg:p-12`}>
           <HeroIntro />
         </div>
         
@@ -122,92 +123,92 @@ const Index = () => {
           <div className="w-full p-6">
             <div className="mb-4 flex items-center gap-2">
               <span className="text-2xl">⚡</span>
-              <h1 className="text-2xl font-bold">
-                Brand<span className="text-gradient-primary">Forge</span>
+              <h1 className="text-2xl font-bold text-amber-400">
+                Brand<span className="text-orange-500">2Boost</span>
               </h1>
             </div>
-            <h2 className="mb-3 text-xl font-semibold">
-              Build Your Brand Identity with AI
-            </h2>
-            <p className="text-sm text-muted-foreground">
-              Transform your idea into a complete brand identity in minutes.
-            </p>
           </div>
         </div>
 
         {/* Right panel - Question text and chat bubble */}
-        <div className="flex-1 flex flex-col items-center justify-center p-6 lg:p-12">
+        <div className="flex-1 flex flex-col items-start justify-center p-6 lg:p-12">
           {/* Question text */}
-          <div className="text-left mb-8 lg:mb-12 max-w-2xl">
-            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-medium italic leading-tight bg-gradient-to-r from-amber-300 via-yellow-400 to-orange-400 bg-clip-text text-transparent">
-              <span>If you had to start</span>
+          <div className="text-left mb-6 lg:mb-8 max-w-2xl">
+            <h1 className="text-xl sm:text-2xl lg:text-3xl font-medium italic leading-relaxed">
+              <span className="text-slate-300">If you had to start</span>
               <br />
-              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-amber-400 via-yellow-500 to-orange-500 bg-clip-text text-transparent">
                 earning money
               </span>
               <br />
-              <span>from a business in the next</span>
+              <span className="text-slate-300">from a business in the next</span>
               <br />
-              <span className="text-4xl sm:text-5xl lg:text-6xl font-bold">
+              <span className="text-3xl sm:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-amber-400 via-yellow-500 to-orange-500 bg-clip-text text-transparent">
                 90 days
               </span>
               <br />
-              <span>what would you create?</span>
+              <span className="text-slate-300">what would you create?</span>
             </h1>
           </div>
+
+          {/* Start Your Journey Button */}
+          <Button 
+            className="mb-8 bg-gradient-to-r from-orange-500 to-orange-600 hover:from-orange-600 hover:to-orange-700 text-white font-semibold px-6 py-3 rounded-lg shadow-lg shadow-orange-500/30 transition-all duration-300 hover:scale-105"
+            onClick={handleFirstMessage}
+          >
+            Start Your Journey Now
+          </Button>
           
-          {/* Chat bubble container with gradient border */}
-          <div className="relative w-full max-w-2xl">
-            {/* Gradient border effect */}
-            <div className="absolute -inset-[6px] bg-gradient-to-r from-purple-500 via-pink-500 to-orange-500 rounded-[15px] opacity-75 blur-lg"></div>
+          {/* Chat bubble container with purple gradient border */}
+          <div className="relative w-full max-w-xl">
+            {/* Purple gradient border effect */}
+            <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-600 via-violet-500 to-purple-600 rounded-2xl"></div>
             
             {/* Input bubble */}
-            <div className="relative bg-[#FFF9F0] dark:bg-background rounded-[15px] shadow-xl overflow-hidden">
-              <div className="flex flex-col gap-3 px-6 py-16">
-                {/* Textarea at the top */}
-                <Textarea
-                  value={input}
-                  onChange={(e) => setInput(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Describe your business idea..."
-                  className="flex-1 bg-transparent border-0 text-foreground placeholder:text-muted-foreground focus-visible:ring-0 focus-visible:ring-offset-0 text-lg resize-none min-h-[120px] p-0"
-                  disabled={isSending}
-                />
-                
-                {/* Bottom row with action buttons - split left and right */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                    >
-                      <Paperclip className="h-4 w-4 text-white" />
-                    </Button>
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                    >
-                      <Plus className="h-4 w-4 text-white" />
-                    </Button>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Button
-                      size="icon"
-                      variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
-                    >
-                      <Mic className="h-4 w-4 text-white" />
-                    </Button>
+            <div className="relative bg-[#0f1a2e] rounded-2xl overflow-hidden">
+              {/* Header text */}
+              <div className="px-6 pt-6 pb-4">
+                <p className="text-slate-400 text-sm">Start describing your business idea...</p>
+              </div>
+              
+              {/* Input area */}
+              <div className="px-6 pb-6">
+                <div className="bg-[#1a2744] rounded-xl p-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-2">
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50"
+                      >
+                        <Paperclip className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        size="icon"
+                        variant="ghost"
+                        className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50"
+                      >
+                        <Plus className="h-4 w-4" />
+                      </Button>
+                    </div>
+                    
+                    <input
+                      type="text"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Describe your business idea..."
+                      className="flex-1 bg-transparent border-0 text-slate-300 placeholder:text-slate-500 focus:outline-none text-sm"
+                      disabled={isSending}
+                    />
+                    
                     <Button
                       onClick={handleSend}
                       size="icon"
-                      variant="ghost"
-                      className="h-9 w-9 rounded-full transition-transform duration-200 hover:scale-110"
+                      className="h-8 w-8 rounded-lg bg-orange-500 hover:bg-orange-600 text-white"
                       disabled={!input.trim() || isSending}
                     >
-                      <Send className="h-4 w-4 text-white" />
+                      <Send className="h-4 w-4" />
                     </Button>
                   </div>
                 </div>
