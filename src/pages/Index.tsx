@@ -3,7 +3,7 @@ import HeroIntro from "@/components/HeroIntro";
 import ChatInterfaceConnected from "@/components/ChatInterfaceConnected";
 import ProjectSidebar from "@/components/ProjectSidebar";
 import { useOnboarding } from "@/hooks/useOnboarding";
-import { Loader2, Send, Paperclip, Plus, Mic, Sun, Moon } from "lucide-react";
+import { Loader2, Send, Paperclip, Mic, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Textarea } from "@/components/ui/textarea";
@@ -144,25 +144,15 @@ const Index = () => {
             <div className="relative bg-[#0a1628] rounded-2xl overflow-hidden">
               {/* Textarea area */}
               <div className="p-5">
-                <textarea
-                  value={input}
-                  onChange={e => setInput(e.target.value)}
-                  onKeyPress={handleKeyPress}
-                  placeholder="Describe your business idea..."
-                  className="w-full bg-transparent border-0 text-slate-300 placeholder:text-slate-500 focus:outline-none text-base resize-none min-h-[100px]"
-                  disabled={isSending}
-                  rows={4}
-                />
+                <textarea value={input} onChange={e => setInput(e.target.value)} onKeyPress={handleKeyPress} placeholder="Describe your business idea..." className="w-full bg-transparent border-0 text-slate-300 placeholder:text-slate-500 focus:outline-none text-base resize-none min-h-[100px]" disabled={isSending} rows={4} />
               </div>
               
               {/* Bottom toolbar */}
               <div className="px-5 pb-5 flex items-center justify-between">
                 <div className="flex items-center gap-2">
+                  
                   <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
-                    <Paperclip className="h-5 w-5" />
-                  </Button>
-                  <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
-                    <Plus className="h-5 w-5" />
+                    
                   </Button>
                 </div>
                 
