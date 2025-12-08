@@ -25,8 +25,21 @@ const HeroIntro = () => {
         <img 
           src={brand2boostLogo} 
           alt="Brand2Boost" 
-          className="-mt-8 mb-8 w-full max-w-xs animate-fade-in-up hover:scale-105 transition-transform duration-300" 
+          className="-mt-8 mb-6 w-full max-w-xs animate-fade-in-up hover:scale-105 transition-transform duration-300" 
         />
+        
+        {/* Typewriter tagline with glow accents */}
+        <div className="mb-8 overflow-hidden">
+          <p className="text-lg sm:text-xl text-foreground/90 font-light leading-relaxed">
+            <span className="inline-block overflow-hidden whitespace-nowrap animate-typewriter border-r-2 border-primary pr-1 animate-blink">
+              If you had to start{" "}
+              <span className="font-semibold text-accent animate-text-glow">earning money</span>{" "}
+              from a business in the next{" "}
+              <span className="font-bold text-primary animate-text-glow">90 days</span>{" "}
+              what would you create?
+            </span>
+          </p>
+        </div>
         
         <img 
           src={featuresImage} 

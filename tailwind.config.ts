@@ -1,5 +1,7 @@
 import type { Config } from "tailwindcss";
 
+// Adding typewriter animation
+
 export default {
   darkMode: ["class"],
   content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
@@ -103,6 +105,18 @@ export default {
           "0%": { transform: "rotate(0deg)" },
           "100%": { transform: "rotate(360deg)" },
         },
+        "typewriter": {
+          "0%": { width: "0" },
+          "100%": { width: "100%" },
+        },
+        "blink": {
+          "0%, 50%": { borderColor: "transparent" },
+          "51%, 100%": { borderColor: "hsl(var(--primary))" },
+        },
+        "text-glow": {
+          "0%, 100%": { textShadow: "0 0 10px hsl(var(--primary) / 0.5), 0 0 20px hsl(var(--primary) / 0.3)" },
+          "50%": { textShadow: "0 0 20px hsl(var(--primary) / 0.8), 0 0 40px hsl(var(--primary) / 0.5)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -112,6 +126,9 @@ export default {
         "float": "float 4s ease-in-out infinite",
         "pulse-glow": "pulse-glow 3s ease-in-out infinite",
         "spin-slow": "spin-slow 20s linear infinite",
+        "typewriter": "typewriter 3s steps(40) forwards",
+        "blink": "blink 1s step-end infinite",
+        "text-glow": "text-glow 2s ease-in-out infinite",
       },
     },
   },
