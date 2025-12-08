@@ -135,37 +135,44 @@ const Index = () => {
             Start Your Journey Now
           </Button>
           
-          {/* Chat bubble container with purple gradient border */}
+          {/* Chat bubble container with gradient border */}
           <div className="relative w-full max-w-xl">
-            {/* Purple gradient border effect */}
-            <div className="absolute -inset-[2px] bg-gradient-to-r from-purple-600 via-violet-500 to-purple-600 rounded-2xl"></div>
+            {/* Gradient border effect - purple to orange */}
+            <div className="absolute -inset-[2px] bg-gradient-to-br from-purple-600 via-violet-500 to-orange-500 rounded-2xl"></div>
             
             {/* Input bubble */}
-            <div className="relative bg-[#0f1a2e] rounded-2xl overflow-hidden">
-              {/* Header text */}
-              <div className="px-6 pt-6 pb-4">
-                
+            <div className="relative bg-[#0a1628] rounded-2xl overflow-hidden">
+              {/* Textarea area */}
+              <div className="p-5">
+                <textarea
+                  value={input}
+                  onChange={e => setInput(e.target.value)}
+                  onKeyPress={handleKeyPress}
+                  placeholder="Describe your business idea..."
+                  className="w-full bg-transparent border-0 text-slate-300 placeholder:text-slate-500 focus:outline-none text-base resize-none min-h-[100px]"
+                  disabled={isSending}
+                  rows={4}
+                />
               </div>
               
-              {/* Input area */}
-              <div className="px-6 pb-6">
-                <div className="bg-[#1a2744] rounded-xl p-3">
-                  <div className="flex items-center gap-3">
-                    <div className="flex items-center gap-2">
-                      <Button size="icon" variant="ghost" className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
-                        <Paperclip className="h-4 w-4" />
-                      </Button>
-                      <Button size="icon" variant="ghost" className="h-8 w-8 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
-                        <Plus className="h-4 w-4" />
-                      </Button>
-                    </div>
-                    
-                    <input type="text" value={input} onChange={e => setInput(e.target.value)} onKeyPress={handleKeyPress} placeholder="Describe your business idea..." className="flex-1 bg-transparent border-0 text-slate-300 placeholder:text-slate-500 focus:outline-none text-sm" disabled={isSending} />
-                    
-                    <Button onClick={handleSend} size="icon" className="h-8 w-8 rounded-lg bg-orange-500 hover:bg-orange-600 text-white" disabled={!input.trim() || isSending}>
-                      <Send className="h-4 w-4" />
-                    </Button>
-                  </div>
+              {/* Bottom toolbar */}
+              <div className="px-5 pb-5 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
+                    <Paperclip className="h-5 w-5" />
+                  </Button>
+                  <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
+                    <Plus className="h-5 w-5" />
+                  </Button>
+                </div>
+                
+                <div className="flex items-center gap-2">
+                  <Button size="icon" variant="ghost" className="h-9 w-9 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50">
+                    <Mic className="h-5 w-5" />
+                  </Button>
+                  <Button onClick={handleSend} size="icon" variant="ghost" className="h-9 w-9 rounded-full text-slate-400 hover:text-slate-300 hover:bg-slate-700/50" disabled={!input.trim() || isSending}>
+                    <Send className="h-5 w-5" />
+                  </Button>
                 </div>
               </div>
             </div>
