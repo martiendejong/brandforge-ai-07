@@ -1,5 +1,7 @@
+import { ArrowRight } from "lucide-react";
 import featuresImage from "@/assets/features-list.png";
 import brand2boostLogo from "@/assets/brand2boost-logo.png";
+import { Button } from "@/components/ui/button";
 
 const HeroIntro = () => {
   return (
@@ -40,8 +42,17 @@ const HeroIntro = () => {
             </span>
           </p>
         </div>
+
+        {/* CTA Button */}
+        <Button 
+          size="lg" 
+          className="mb-8 w-fit group gradient-primary hover:opacity-90 text-primary-foreground font-semibold px-8 py-6 text-lg rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+        >
+          Start Building
+          <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+        </Button>
         
-        <img 
+        <img
           src={featuresImage} 
           alt="BrandForge features" 
           className="w-full max-w-md animate-fade-in-up hover:scale-[1.02] transition-transform duration-300" 
