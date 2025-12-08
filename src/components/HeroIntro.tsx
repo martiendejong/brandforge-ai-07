@@ -22,7 +22,7 @@ const HeroIntro = () => {
         <img 
           src={brand2boostLogo} 
           alt="Brand2Boost" 
-          className="-mt-8 mb-8 w-full max-w-xs animate-fade-in-up hover:scale-105 transition-transform duration-300" 
+          className="-mt-10.5 mb-8 w-full max-w-xs animate-fade-in-up hover:scale-105 transition-transform duration-300" 
         />
         
         <img 
