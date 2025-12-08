@@ -22,21 +22,18 @@ const HeroIntro = () => {
 
       {/* Main content centered */}
       <div className="mx-auto w-full max-w-xl flex-1 flex flex-col justify-center relative z-10">
-        {/* Glass card container */}
-        <div className="glass-effect rounded-2xl p-6 sm:p-8 lg:p-10">
-          <img 
-            src={brand2boostLogo} 
-            alt="Brand2Boost" 
-            className="-mt-8 mb-8 w-full max-w-xs opacity-0 animate-fade-in-up hover:scale-105 transition-transform duration-300" 
-          />
-          
-          <img 
-            src={featuresImage} 
-            alt="BrandForge features" 
-            className="w-full max-w-md opacity-0 animate-fade-in-up-delay hover:scale-[1.02] transition-transform duration-300 animate-float" 
-            style={{ animationDelay: '0.2s' }}
-          />
-        </div>
+        <img 
+          src={brand2boostLogo} 
+          alt="Brand2Boost" 
+          className="-mt-8 mb-8 w-full max-w-xs animate-fade-in-up hover:scale-105 transition-transform duration-300" 
+        />
+        
+        <img 
+          src={featuresImage} 
+          alt="BrandForge features" 
+          className="w-full max-w-md animate-fade-in-up hover:scale-[1.02] transition-transform duration-300" 
+          style={{ animationDelay: '0.2s' }}
+        />
       </div>
     </div>
   );
