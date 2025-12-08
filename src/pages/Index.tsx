@@ -119,7 +119,7 @@ const Index = () => {
         
         {/* Mobile intro (shown on top) */}
         <div className={`lg:hidden ${isFullScreen ? 'hidden' : 'flex'}`}>
-          <div className="w-full p-6 border-b border-border">
+          <div className="w-full p-6">
             <div className="mb-4 flex items-center gap-2">
               <span className="text-2xl">⚡</span>
               <h1 className="text-2xl font-bold">
