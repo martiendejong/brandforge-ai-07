@@ -1,10 +1,10 @@
 import { Search } from "lucide-react";
 
 const projects = [
-  { name: "Mara Conservancy", highlighted: false },
-  { name: "Mara Conservancy", highlighted: false },
-  { name: "Mara Conservancy", highlighted: true },
-  { name: "Mara Conservancy", highlighted: true },
+  { name: "Mara Conservancy", active: true },
+  { name: "Mara Conservancy", active: false },
+  { name: "Mara Conservancy", active: false },
+  { name: "Mara Conservancy", active: false },
 ];
 
 const ProjectsShowcase = () => {
@@ -15,7 +15,7 @@ const ProjectsShowcase = () => {
         <input
           type="text"
           placeholder="Search projects..."
-          className="w-full rounded-xl bg-slate-800/60 px-4 py-3 pl-11 text-sm text-foreground placeholder:text-muted-foreground border border-border/30 focus:outline-none focus:ring-2 focus:ring-primary/50"
+          className="w-full rounded-xl bg-slate-800/60 px-4 py-3 pl-11 text-sm text-foreground placeholder:text-amber-400/50 border border-border/30 focus:outline-none focus:ring-2 focus:ring-primary/50"
           readOnly
         />
         <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
@@ -26,9 +26,17 @@ const ProjectsShowcase = () => {
         {projects.map((project, index) => (
           <div
             key={index}
-            className="flex-1 flex items-center rounded-xl bg-slate-800/60 px-5 border border-border/20 hover:bg-slate-700/60 hover:scale-[1.02] transition-all duration-300 cursor-pointer"
+            className={`flex-1 flex items-center rounded-xl px-5 border border-border/20 transition-all duration-300 cursor-pointer group ${
+              project.active 
+                ? "bg-slate-700/80" 
+                : "bg-slate-800/60 hover:bg-slate-700/60 hover:scale-[1.02]"
+            }`}
           >
-            <span className={project.highlighted ? "text-amber-400 font-medium" : "text-foreground font-medium"}>
+            <span className={`font-medium transition-colors duration-300 ${
+              project.active 
+                ? "text-amber-400" 
+                : "text-white group-hover:text-amber-400"
+            }`}>
               {project.name}
             </span>
           </div>
