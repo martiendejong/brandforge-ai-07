@@ -15,7 +15,7 @@ const ProjectsShowcase = () => {
         <input
           type="text"
           placeholder="Search projects..."
-          className="w-full rounded-xl bg-slate-800/60 px-4 py-3 pl-11 text-sm text-foreground placeholder:text-amber-400/50 border border-border/30 focus:outline-none focus:ring-2 focus:ring-primary/50"
+          className="w-full rounded-xl bg-slate-800/60 px-4 py-3 pl-11 text-sm text-foreground placeholder:text-amber-400/50 border-2 border-slate-600 focus:outline-none focus:ring-2 focus:ring-primary/50"
           readOnly
         />
         <Search className="absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
