@@ -1,4 +1,3 @@
-import brand2boostLogo from "@/assets/brand2boost-logo.png";
 import ProjectsShowcase from "./ProjectsShowcase";
 const HeroIntro = () => {
   return (
@@ -18,12 +17,6 @@ const HeroIntro = () => {
 
       {/* Main content centered */}
       <div className="mx-auto w-full max-w-xl flex-1 flex flex-col justify-center relative z-10">
-        <img 
-          src={brand2boostLogo} 
-          alt="Brand2Boost" 
-          className="-mt-10.5 mb-8 w-full max-w-xs animate-fade-in-up hover:scale-105 transition-transform duration-300" 
-        />
-        
         <ProjectsShowcase />
       </div>
     </div>
